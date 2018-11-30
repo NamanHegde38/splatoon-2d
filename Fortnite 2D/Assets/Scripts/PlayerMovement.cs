@@ -14,36 +14,62 @@ public class PlayerMovement : MonoBehaviour {
 	private float fallMultiplier = 2.5f;
 	private bool crouchEnabled;
 	private bool jumpRequest;
+	private bool isGrounded;
+	private Vector2 playerSize;
+	private Vector2 boxSize;
 	private Rigidbody2D rigidBody;
+	private Animator anim;
+	private CircleCollider2D footCollider;
 
 
 	void Awake () {
 
 		rigidBody = GetComponent<Rigidbody2D>();
+		anim = GetComponent<Animator>();
+		footCollider = GetComponent<CircleCollider2D>();
 		currentSpeed = walkSpeed;
 	}
 	
 	void Update () {
+		Walk();
 		JumpRequest();
+		Crouch();
 	}
 
 	void FixedUpdate () {
-
-		Walk();
 		Jump();
-		Crouch();
+	}
+
+	void OnCollisionEnter2D (Collision2D collision) {
+
+		footCollider = collision.gameObject.GetComponent<CircleCollider2D>();
+
+		if (collision.gameObject.tag == "Ground") {
+			isGrounded = true;
+		}
+
 	}
 
 	void Walk () {
 
 		if (Input.GetKey(KeyCode.A)) {
 			transform.Translate(Vector2.left * currentSpeed * Time.fixedDeltaTime);
-			transform.localScale = new Vector3(-6, 6, 1);
+			transform.localScale = new Vector3(-0.75f, 0.75f, 0.75f);
+			anim.SetBool("Walk", true);
+		}
+
+		if (Input.GetKeyUp(KeyCode.A)) {
+			anim.SetBool("Walk", false);
 		}
 
 		else if (Input.GetKey(KeyCode.D)) {
 			transform.Translate(Vector2.right * currentSpeed * Time.fixedDeltaTime);
-			transform.localScale = new Vector3(6, 6, 1);
+			transform.localScale = new Vector3(0.75f, 0.75f, 0.75f);
+			anim.SetBool("Walk", true);
+		}
+
+		if (Input.GetKeyUp(KeyCode.D)) {
+			anim.SetBool("Walk", false);
 		}
 	}
 
@@ -51,7 +77,9 @@ public class PlayerMovement : MonoBehaviour {
 
 		if (jumpRequest) {
 			GetComponent<Rigidbody2D>().AddForce(Vector2.up * jumpSpeed, ForceMode2D.Impulse);
+			anim.SetBool("Jump", true);
 			jumpRequest = false;
+			isGrounded = false;
 		}
 
 		if (rigidBody.velocity.y < 0) {
@@ -61,11 +89,15 @@ public class PlayerMovement : MonoBehaviour {
 		else {
 			rigidBody.gravityScale = 1;
 		}
+
+		if (rigidBody.velocity.y == 0) {
+			anim.SetBool("Jump", false);
+		}
 	}
 
 	void JumpRequest() {
 
-		if (Input.GetKeyDown(jump)) {
+		if (Input.GetKeyDown(jump) && isGrounded) {
 			jumpRequest = true;
 		}
 	}
@@ -81,5 +113,5 @@ public class PlayerMovement : MonoBehaviour {
 			currentSpeed = walkSpeed;
 			crouchEnabled = false;
 		}
-	}	
+	}
 }

@@ -19,14 +19,12 @@ public class PlayerMovement : MonoBehaviour {
 	private Vector2 boxSize;
 	private Rigidbody2D rigidBody;
 	private Animator anim;
-	private CircleCollider2D footCollider;
 
 
 	void Awake () {
 
 		rigidBody = GetComponent<Rigidbody2D>();
 		anim = GetComponent<Animator>();
-		footCollider = GetComponent<CircleCollider2D>();
 		currentSpeed = walkSpeed;
 	}
 	
@@ -41,8 +39,6 @@ public class PlayerMovement : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D (Collision2D collision) {
-
-		footCollider = collision.gameObject.GetComponent<CircleCollider2D>();
 
 		if (collision.gameObject.tag == "Ground") {
 			isGrounded = true;

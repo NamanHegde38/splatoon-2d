@@ -43,7 +43,6 @@ public class PlayerMovement : MonoBehaviour {
 		if (collision.gameObject.tag == "Ground") {
 			isGrounded = true;
 		}
-
 	}
 
 	void Walk () {

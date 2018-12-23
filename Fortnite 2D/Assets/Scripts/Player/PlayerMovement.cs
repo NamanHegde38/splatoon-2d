@@ -17,12 +17,13 @@ public class PlayerMovement : MonoBehaviour {
 	private bool isGrounded;
 	private Vector2 playerSize;
 	private Vector2 boxSize;
+	private Vector3 scale;
 	private Rigidbody2D rigidBody;
 	private Animator anim;
 
 
 	void Awake () {
-
+		scale = transform.localScale;
 		rigidBody = GetComponent<Rigidbody2D>();
 		anim = GetComponent<Animator>();
 		currentSpeed = walkSpeed;
@@ -49,7 +50,7 @@ public class PlayerMovement : MonoBehaviour {
 
 		if (Input.GetKey(KeyCode.A)) {
 			transform.Translate(Vector2.left * currentSpeed * Time.fixedDeltaTime);
-			transform.localScale = new Vector3(-0.75f, 0.75f, 0.75f);
+			transform.localScale = new Vector3(-scale.x, scale.y, scale.z);
 			anim.SetBool("Walk", true);
 		}
 
@@ -59,7 +60,7 @@ public class PlayerMovement : MonoBehaviour {
 
 		else if (Input.GetKey(KeyCode.D)) {
 			transform.Translate(Vector2.right * currentSpeed * Time.fixedDeltaTime);
-			transform.localScale = new Vector3(0.75f, 0.75f, 0.75f);
+			transform.localScale =  scale;
 			anim.SetBool("Walk", true);
 		}
 
@@ -99,14 +100,16 @@ public class PlayerMovement : MonoBehaviour {
 
 	void Crouch () {
 
-		if (Input.GetKeyDown(crouch) && !crouchEnabled) {
+		if (Input.GetKeyDown(crouch) && isGrounded && !crouchEnabled) {
 			currentSpeed = crouchSpeed;
 			crouchEnabled = true;
 		}
 
-		else if (Input.GetKeyDown(crouch) && crouchEnabled) {
+		else if (Input.GetKeyDown(crouch) && isGrounded && crouchEnabled) {
 			currentSpeed = walkSpeed;
 			crouchEnabled = false;
 		}
+
+		anim.SetBool("Crouch", crouchEnabled);
 	}
 }

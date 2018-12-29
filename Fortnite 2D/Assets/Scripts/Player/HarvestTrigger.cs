@@ -10,7 +10,7 @@ public class HarvestTrigger : MonoBehaviour {
 
 	void OnTriggerEnter2D (Collider2D col) {
 		
-		if (col.isTrigger != true && col.GetComponent<Tree>()) {
+		if (col.isTrigger != true && col.GetComponent<TreeController>()) {
 			col.SendMessageUpwards("Damage", damage);
 		}
 	}

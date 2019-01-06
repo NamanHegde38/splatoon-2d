@@ -44,18 +44,29 @@ public class SpawnTree : MonoBehaviour {
 
 	void FirstSpawn() {
 
-		randomX = Random.Range(0, 9);
-		Vector2 spawnPos = new Vector2(randomX, 5);
-		RaycastHit2D ray = Physics2D.Raycast(spawnPos, -transform.up);
+		spawnPoint1 = new Vector2(-25, 10);
+		spawnPoint2 = new Vector2(-20, 10);
+		spawnPoint3 = new Vector2(-15, 10);
+		spawnPoint4 = new Vector2(-10, 10);
+		spawnPoint5 = new Vector2(-5, 10);
+		spawnPoint6 = new Vector2(0, 10);
+		spawnPoint7 = new Vector2(5, 10);
+		spawnPoint8 = new Vector2(10, 10);
+		spawnPoint9 = new Vector2(15, 10);
+		spawnPoint10 = new Vector2(18, 10);
 
-		if (ray.collider != null && ray.collider.tag == "Ground") {
-			spawnPoint = ray.point;
-			Instantiate(tree, spawnPoint, Quaternion.identity, parent);
-		}
+		spawnSpot.Add(spawnPoint1);
+		spawnSpot.Add(spawnPoint2);
+		spawnSpot.Add(spawnPoint3);
+		spawnSpot.Add(spawnPoint4);
+		spawnSpot.Add(spawnPoint5);
+		spawnSpot.Add(spawnPoint6);
+		spawnSpot.Add(spawnPoint7);
+		spawnSpot.Add(spawnPoint8);
+		spawnSpot.Add(spawnPoint9);
+		spawnSpot.Add(spawnPoint10);
 
-		else {
-			FindSpawn();
-		}
+		Spawn();
 	}
 
 	void CheckSpawn () {

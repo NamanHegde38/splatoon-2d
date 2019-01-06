@@ -7,21 +7,18 @@ using System.Collections.Generic;
 public class PlayerHarvest : MonoBehaviour {
 
 	public float harvestCooldown = 0.3f;
-	public Collider2D harvestTrigger;
+	public GameObject harvestTrigger;
+	public Transform parent;
 	public KeyCode harvest;
 
 	private float harvestTimer = 0f;
 	private bool harvesting = false;
+	private GameObject spawnedTrigger;
 	private Animator anim;
 
 	void Awake () {
 
 		anim = GetComponent<Animator>();
-	}
-
-	void Start () {
-
-		harvestTrigger.enabled = false;
 	}
 	
 	void Update () {
@@ -35,9 +32,10 @@ public class PlayerHarvest : MonoBehaviour {
 
 			harvesting = true;
 			harvestTimer = harvestCooldown;
-			harvestTrigger.enabled = true;
+			Instantiate (harvestTrigger, transform.position, Quaternion.identity, parent);
+			spawnedTrigger = (GameObject) Instantiate (harvestTrigger, transform.position, Quaternion.identity, parent);
 		}
-
+		
 		if (harvesting) {
 
 			if (harvestTimer > 0) {
@@ -46,7 +44,7 @@ public class PlayerHarvest : MonoBehaviour {
 
 			else {
 				harvesting = false;
-				harvestTrigger.enabled = false;
+				Destroy (spawnedTrigger);
 			}
 		}
 

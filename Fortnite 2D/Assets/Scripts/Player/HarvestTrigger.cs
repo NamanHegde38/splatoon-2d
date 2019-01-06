@@ -14,4 +14,9 @@ public class HarvestTrigger : MonoBehaviour {
 			col.SendMessageUpwards("Damage", damage);
 		}
 	}
+
+	public void Destroy () {
+
+		Destroy(gameObject);
+	}
 }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4963971271275370}
   - component: {fileID: 212346785690210144}
   - component: {fileID: 2942860395490322343}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Bush
   m_TagString: Props
   m_Icon: {fileID: 0}

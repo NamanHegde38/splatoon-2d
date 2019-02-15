@@ -45,6 +45,7 @@ public class PlayerMovement : MonoBehaviour {
 
 	public void OnLanding () {
 		anim.SetBool("Jumping", false);
+		jump = false;
 	}
 
 	public void OnCrouching (bool isCrouching) {

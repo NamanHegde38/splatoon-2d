@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 61699980926193564}
   - component: {fileID: 114279942484367558}
   - component: {fileID: 794555042051733113}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Tree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,7 +47,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 2.31}
+  m_Offset: {x: 0, y: 1.5157084}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.57, y: 0.04}
@@ -58,7 +58,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 5}
+  m_Size: {x: 1, y: 3.411417}
   m_EdgeRadius: 0
 --- !u!114 &114279942484367558
 MonoBehaviour:
@@ -72,13 +72,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ed5978100990674498e6344d6615ca8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animCooldown: 0.2
   health: 100
-  damaged: 0
-  sprite:
-  - {fileID: 21300000, guid: c99f7e2716382c640a10289d69af1aa6, type: 3}
-  - {fileID: 21300000, guid: 5a2f9aa1567a5fc4aa5c4079cd99ceb6, type: 3}
-  - {fileID: 21300000, guid: 8f1c84437c3ae34448df4496da6faf59, type: 3}
+  animCooldown: 0.6
 --- !u!95 &794555042051733113
 Animator:
   serializedVersion: 3

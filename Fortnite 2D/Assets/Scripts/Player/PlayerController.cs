@@ -5,19 +5,24 @@ public class PlayerController : MonoBehaviour
 {
 	[Range(1, 20)] [SerializeField] private float m_JumpVelocity = 10f;							// Amount of force added when the player jumps.
 	[Range(0, 1)] [SerializeField] private float m_CrouchSpeed = .36f;			// Amount of maxSpeed applied to crouching movement. 1 = 100%
-	[Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;	// How much to smooth out the movement
+	[Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;  // How much to smooth out the movement
+	[Range(0, 5f)] [SerializeField] private float k_SlopeFriction;
 	[SerializeField] private bool m_AirControl = false;							// Whether or not a player can steer while jumping;
 	[SerializeField] private LayerMask m_WhatIsGround;							// A mask determining what is ground to the character
 	[SerializeField] private Transform m_GroundCheck;							// A position marking where to check if the player is grounded.
-	[SerializeField] private Transform m_CeilingCheck;							// A position marking where to check for ceilings
+	[SerializeField] private Transform m_CeilingCheck;                          // A position marking where to check for ceilings
+	[SerializeField] private Transform m_RaycastPos;
 	[SerializeField] private Collider2D m_CrouchDisableCollider;                // A collider that will be disabled when crouching
+	[SerializeField] private CircleCollider2D circleCollider;
+	[SerializeField] private BoxCollider2D boxCollider;
+	[SerializeField] private float maxClimbAngle;
 
 	private float fallMultiplier = 2.5f;
 
 	const float k_GroundedRadius = .2f; // Radius of the overlap circle to determine if grounded
 	private bool m_Grounded;            // Whether or not the player is grounded.
 	const float k_CeilingRadius = .2f; // Radius of the overlap circle to determine if the player can stand up
-	public Rigidbody2D m_Rigidbody2D;
+	[HideInInspector] public Rigidbody2D m_Rigidbody2D;
 	private bool m_FacingRight = true;  // For determining which way the player is currently facing.
 	private Vector3 m_Velocity = Vector3.zero;
 
@@ -45,6 +50,7 @@ public class PlayerController : MonoBehaviour
 
 	private void FixedUpdate()
 	{
+
 		bool wasGrounded = m_Grounded;
 		m_Grounded = false;
 
@@ -60,12 +66,23 @@ public class PlayerController : MonoBehaviour
 					OnLandEvent.Invoke();
 			}
 		}
+
+		//Managing Slopes
+		if (m_Grounded) {
+
+			RaycastHit2D hit = Physics2D.Raycast(m_RaycastPos.position , -Vector2.up, m_WhatIsGround);
+			float slopeAngle = Vector2.Angle(Vector2.up, hit.normal);
+			if (hit && slopeAngle != 0 && slopeAngle <= maxClimbAngle) {
+				m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x - (hit.normal.x * k_SlopeFriction), m_Rigidbody2D.velocity.y);
+			}
+			
+		}
 	}
 
 
-	public void Move(float move, bool crouch, bool jump)
-	{
+	public void Move(float move, bool crouch, bool jump) {
 		// If crouching, check to see if the character can stand up
+
 		if (!crouch)
 		{
 			// If the character has a ceiling preventing them from standing up, keep them crouching
@@ -129,7 +146,6 @@ public class PlayerController : MonoBehaviour
 		if (m_Grounded && jump)
 		{
 			// Add a vertical force to the player.
-			m_Grounded = false;
 			m_Rigidbody2D.AddForce(Vector2.up * m_JumpVelocity, ForceMode2D.Impulse);
 		}
 
@@ -140,7 +156,6 @@ public class PlayerController : MonoBehaviour
 		else {
 			m_Rigidbody2D.gravityScale = 1f;
 		}
-
 	}
 
 
@@ -153,5 +168,12 @@ public class PlayerController : MonoBehaviour
 		Vector3 theScale = transform.localScale;
 		theScale.x *= -1;
 		transform.localScale = theScale;
+	}
+
+	private void OnDrawGizmosSelected() {
+		Gizmos.color = Color.yellow;
+		Gizmos.DrawWireSphere(m_GroundCheck.position, k_GroundedRadius);
+		Gizmos.DrawWireSphere(m_CeilingCheck.position, k_CeilingRadius);
+		Debug.DrawRay(m_GroundCheck.position, Vector2.down, Color.red);
 	}
 }

@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour {
 	public float runSpeed = 40;
 
 	private float horizontalMove = 0f;
+	private float jumpCd = 0f;
 	private bool jump = false;
 	private bool crouch = false;
 	private Animator anim;
@@ -23,9 +24,19 @@ public class PlayerMovement : MonoBehaviour {
 
 		anim.SetFloat("Speed", Mathf.Abs(horizontalMove));
 
-		if (Input.GetButtonDown("Jump")) {
-			jump = true;
-			anim.SetBool("Jumping", true);
+		//Jump Cooldown
+		if (jumpCd <= 0) {
+
+			if (Input.GetButtonDown("Jump")) {
+
+				jump = true;
+				jumpCd = 0.1f;
+				anim.SetBool("Jumping", true);
+			}
+		}
+
+		else {
+			jumpCd -= Time.deltaTime;
 		}
 
 		if (Input.GetButtonDown("Crouch")) {

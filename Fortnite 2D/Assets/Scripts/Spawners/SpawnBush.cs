@@ -6,35 +6,28 @@ using System.Collections.Generic;
 
 public class SpawnBush : MonoBehaviour {
 
-	public GameObject bush;
-	public Transform parent;
+	public GameObject prefab;
+	public List<Transform> spawnPoints = new List<Transform>();
 
-	private int spawnRate;
-	private float randomX;
-	private float randomY;
-	private Vector2 spawnPosition;
-	private Vector2 spawnPoint;
+	private int firstSpawn;
+	private int randomX;
 
-	void Start () {
-		spawnRate = Random.Range(2, 4);
-		for (int i = 0; i < spawnRate; i++) {
-			FindSpawn();
+	void Start() {
+
+		firstSpawn = Random.Range(3, 6);
+
+		for (int i = 0; i < firstSpawn; i++) {
+			randomX = Random.Range(0, 8);
+			Spawn(spawnPoints[randomX]);
 		}
 	}
 
-	void FindSpawn () {
+	void Spawn(Transform spawnPoint) {
 
-		randomX = Random.Range(-40, 25);
-		spawnPosition = new Vector2(randomX, 5);
-		RaycastHit2D ray = Physics2D.Raycast(spawnPosition, -transform.up);
+		RaycastHit2D hit = Physics2D.Raycast(new Vector2(spawnPoint.position.x, transform.position.y), Vector2.down);
 
-		if (ray.collider != null && ray.collider.tag == "Ground") {
-				spawnPoint = ray.point;
-				Instantiate(bush, spawnPoint, Quaternion.identity, parent);
-		}
-
-		else {
-				FindSpawn();
+		if (hit && hit.collider.CompareTag("Ground")) {
+			Instantiate(prefab, spawnPoint.position, Quaternion.identity, spawnPoint);
 		}
 	}
 }

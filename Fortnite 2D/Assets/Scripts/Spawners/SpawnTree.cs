@@ -6,65 +6,53 @@ using System.Collections.Generic;
 
 public class SpawnTree : MonoBehaviour {
 
+	[Range (1, 10)]
+	public float spawnRate;
 	public GameObject prefab;
-	public Transform parent;
 	public TreeController tree;
-	public List<Vector2> spawnPoints = new List<Vector2>();
+	public List<Transform> spawnPoints = new List<Transform>();
 
 	private float spawnTimer;
+	private int firstSpawn;
 	private int randomX;
-	private int spawnRate;
-	private bool nextSpawn;
 
 	
 
 	void Start () {
+		
+		firstSpawn = Random.Range(2,5);
+		spawnTimer = spawnRate;
 
-		spawnRate = Random.Range(2, 4);
-		for (int i = 0; i < spawnRate; i++) {
-			Spawn();
+		for (int i = 0; i < firstSpawn; i++) {
+			randomX = Random.Range(0, 8);
+			Spawn(spawnPoints[randomX]);
 		}
 	}
 
-	void Update() {
-		CheckSpawn();
-	}
+	void Update () {
 
-	void CheckSpawn () {
+		float treesInScene = GameObject.FindGameObjectsWithTag("Tree").Length;
 
-		if (parent.childCount < 2) {
-			nextSpawn = true;
-		}
+		if (spawnTimer <= 0) {
 
-		if (nextSpawn) {
-			FindSpawn();
-		}
-	}
-
-	public void FindSpawn () {
-
-		randomX = Random.Range(0, 9);
-
-		Spawn();
-	}
-
-	void Spawn () {
-
-		for (int i = 0; i < spawnPoints.Count; i++) {
-			if (spawnPoints[randomX] == spawnPoints[i]) {
-				InstantiatePrefab(spawnPoints[i]);
+			if (treesInScene < 2) {
+				randomX = Random.Range(0, 8);
+				Spawn(spawnPoints[randomX]);
 			}
+			spawnTimer = spawnRate;
+		}
+
+		else {
+			spawnTimer -= Time.deltaTime;
 		}
 	}
 
-	void InstantiatePrefab(Vector2 spawnPoint) {
+	void Spawn (Transform spawnPoint) {
 
-		RaycastHit2D hit = Physics2D.Raycast(spawnPoint, Vector2.down);
+		RaycastHit2D hit = Physics2D.Raycast(new Vector2(spawnPoint.position.x, transform.position.y), Vector2.down);
 
-		if (hit.collider != null && hit.collider.CompareTag("Ground")) {
-			Instantiate(prefab, hit.point, Quaternion.identity, parent);
-			nextSpawn = false;
-
+		if (hit && hit.collider.CompareTag("Ground")) {
+			Instantiate(prefab, spawnPoint.position, Quaternion.identity, spawnPoint);
 		}
 	}
 }

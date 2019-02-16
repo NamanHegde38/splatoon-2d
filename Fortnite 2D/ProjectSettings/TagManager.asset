@@ -6,8 +6,8 @@ TagManager:
   tags:
   - Ground
   - Walls
-  - Obstacles
   - Props
+  - Tree
   layers:
   - Default
   - TransparentFX
@@ -47,6 +47,9 @@ TagManager:
     locked: 0
   - name: Background
     uniqueID: 1982007353
+    locked: 0
+  - name: Prop
+    uniqueID: 2727469883
     locked: 0
   - name: Main
     uniqueID: 2995722071

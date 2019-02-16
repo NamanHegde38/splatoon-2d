@@ -74,6 +74,9 @@ public class PlayerController : MonoBehaviour
 			float slopeAngle = Vector2.Angle(Vector2.up, hit.normal);
 			if (hit && slopeAngle != 0 && slopeAngle <= maxClimbAngle) {
 				m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x - (hit.normal.x * k_SlopeFriction), m_Rigidbody2D.velocity.y);
+				Vector3 pos = transform.position;
+				pos.y += -hit.normal.x * Mathf.Abs(m_Rigidbody2D.velocity.x) * Time.deltaTime * (m_Rigidbody2D.velocity.x - hit.normal.x > 0 ? 1 : -1);
+				transform.position = pos;
 			}
 			
 		}

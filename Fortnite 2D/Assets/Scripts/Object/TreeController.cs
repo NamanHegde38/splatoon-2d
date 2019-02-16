@@ -7,12 +7,19 @@ using System.Collections.Generic;
 public class TreeController : MonoBehaviour {
 
 	public int health = 100;
+	public List<Sprite> sprites = new List<Sprite>();
 
+	private int randomSprite;
+	private SpriteRenderer spriteRenderer;
 	private Animator anim;
+
 
 	void Start () {
 
+		spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 		anim = GetComponent<Animator>();
+		randomSprite = Random.Range(0, sprites.Count - 1);
+		spriteRenderer.sprite = sprites[randomSprite];
 	}
 
 	void Update () {
@@ -26,8 +33,4 @@ public class TreeController : MonoBehaviour {
 		health -= damage;
 		anim.SetTrigger("Damaged");
 	}
-
-
-
-	
 }

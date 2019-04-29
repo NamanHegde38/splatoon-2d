@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour {
 	private float jumpCd = 0f;
 	private bool jump = false;
 	private bool crouch = false;
+	private bool input = false;
 	private Animator anim;
 
 	void Start () {
@@ -23,6 +24,8 @@ public class PlayerMovement : MonoBehaviour {
 		horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
 
 		anim.SetFloat("Speed", Mathf.Abs(horizontalMove));
+
+		controller.SetBool(input, jump);
 
 		//Jump Cooldown
 		if (jumpCd <= 0) {
@@ -45,6 +48,14 @@ public class PlayerMovement : MonoBehaviour {
 
 		else if (Input.GetButtonUp("Crouch")) {
 			crouch = false;
+		}
+
+		if (horizontalMove == 0 && !jump) {
+			input = false;
+		}
+
+		else {
+			input = true;
 		}
 	}
 

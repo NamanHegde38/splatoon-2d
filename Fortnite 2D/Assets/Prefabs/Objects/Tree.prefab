@@ -74,9 +74,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   sprites:
-  - {fileID: 21300000, guid: c99f7e2716382c640a10289d69af1aa6, type: 3}
-  - {fileID: 21300000, guid: 5a2f9aa1567a5fc4aa5c4079cd99ceb6, type: 3}
-  - {fileID: 21300000, guid: 8f1c84437c3ae34448df4496da6faf59, type: 3}
+  - {fileID: 21300000, guid: 3f977dd4c1b9fb241b3f8d6b5fa666c8, type: 3}
+  - {fileID: 21300000, guid: ee16057fe7170744dbf507880b016a23, type: 3}
+  - {fileID: 21300000, guid: 61791c8f6332a394eaece8f461a1ca45, type: 3}
 --- !u!95 &794555042051733113
 Animator:
   serializedVersion: 3

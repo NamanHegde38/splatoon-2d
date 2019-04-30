@@ -8,7 +8,6 @@ public class PlayerController : MonoBehaviour
 	[Range(1, 20)] [SerializeField] private float m_JumpVelocity = 10f;							// Amount of force added when the player jumps.
 	[Range(0, 1)] [SerializeField] private float m_CrouchSpeed = .36f;			// Amount of maxSpeed applied to crouching movement. 1 = 100%
 	[Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;  // How much to smooth out the movement
-	[Range(0.5f, 1.5f)] [SerializeField] private float k_SlopeFriction;
 	[SerializeField] private bool m_AirControl = false;							// Whether or not a player can steer while jumping;
 	[SerializeField] private LayerMask m_WhatIsGround;							// A mask determining what is ground to the character
 	[SerializeField] private Transform m_GroundCheck;							// A position marking where to check if the player is grounded.
@@ -69,12 +68,10 @@ public class PlayerController : MonoBehaviour
 		}
 
 		//Managing Slopes
-		if (m_Grounded) {
+		if (m_Grounded && !m_jumping) {
 
 			RaycastHit2D hit = Physics2D.Raycast(m_RaycastPos.position, -Vector2.up, 1f, m_WhatIsGround);
-			k_SlopeFriction = Mathf.Abs(hit.normal.x * 2.1206f);
-
-			Physics2D.gravity = new Vector2(Mathf.Abs(hit.normal.x * 100) * -1, Mathf.Abs(hit.normal.y * 100) * -1);
+			Physics2D.gravity = new Vector2(hit.normal.x * 100 * -1f, Mathf.Abs(hit.normal.y * 100) * -1f);
 
 		}
 

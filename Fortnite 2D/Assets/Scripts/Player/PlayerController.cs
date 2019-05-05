@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 	[Range(1, 20)] [SerializeField] private float m_JumpVelocity = 10f;							// Amount of force added when the player jumps.
 	[Range(0, 1)] [SerializeField] private float m_CrouchSpeed = .36f;			// Amount of maxSpeed applied to crouching movement. 1 = 100%
 	[Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;  // How much to smooth out the movement
+	[Range(1, 10)] [SerializeField] private float fallMultiplier = 2.5f;
 	[SerializeField] private bool m_AirControl = false;							// Whether or not a player can steer while jumping;
 	[SerializeField] private LayerMask m_WhatIsGround;							// A mask determining what is ground to the character
 	[SerializeField] private Transform m_GroundCheck;							// A position marking where to check if the player is grounded.
@@ -17,8 +18,6 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] private CircleCollider2D circleCollider;
 	[SerializeField] private BoxCollider2D boxCollider;
 	[SerializeField] private float maxClimbAngle;
-
-	private float fallMultiplier = 2.5f;
 
 	const float k_GroundedRadius = .2f; // Radius of the overlap circle to determine if grounded
 	private bool m_Grounded;            // Whether or not the player is grounded.
@@ -37,7 +36,7 @@ public class PlayerController : MonoBehaviour
 
 	public BoolEvent OnCrouchEvent;
 	private bool m_wasCrouching = false;
-	private bool m_moving = false;
+	//private bool m_moving = false;
 	private bool m_jumping = false;
 
 	private void Awake() {
@@ -71,7 +70,12 @@ public class PlayerController : MonoBehaviour
 		if (m_Grounded && !m_jumping) {
 
 			RaycastHit2D hit = Physics2D.Raycast(m_RaycastPos.position, -Vector2.up, 1f, m_WhatIsGround);
-			Physics2D.gravity = new Vector2(hit.normal.x * 100 * -1f, Mathf.Abs(hit.normal.y * 100) * -1f);
+			float slopeAngle = Vector3.Angle(hit.normal,Vector2.up);
+			Debug.Log(hit.normal);
+			if (slopeAngle <= 45) {
+				Physics2D.gravity = new Vector2(hit.normal.x * 100 * -1f, Mathf.Abs(hit.normal.y * 100) * -1f);
+			}
+			
 
 		}
 
@@ -83,7 +87,7 @@ public class PlayerController : MonoBehaviour
 
 	public void SetBool (bool inputRecieved, bool jumpInput) {
 
-		m_moving = inputRecieved;
+		//m_moving = inputRecieved;
 		m_jumping = jumpInput;
 	}
 

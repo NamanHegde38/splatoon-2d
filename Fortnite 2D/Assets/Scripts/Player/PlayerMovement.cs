@@ -1,76 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.CrossPlatformInput;
 
+[RequireComponent (typeof (PlayerController))]
 public class PlayerMovement : MonoBehaviour {
 
-	public PlayerController controller;
-	public float runSpeed = 40;
+	float moveSpeed = 6;
+	float gravity = -20;
+	Vector3 velocity;
 
-	private float horizontalMove = 0f;
-	private float jumpCd = 0f;
-	private bool jump = false;
-	private bool crouch = false;
-	private bool input = false;
-	private Animator anim;
+	PlayerController controller;
 
 	void Start () {
 
-		anim = GetComponent<Animator>();
+		controller = GetComponent<PlayerController>();
 	}
 
 	void Update () {
 
-		horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
+		Vector2 input = new Vector2 (Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
-		anim.SetFloat("Speed", Mathf.Abs(horizontalMove));
-
-		controller.SetBool(input, jump);
-
-		//Jump Cooldown
-		if (jumpCd <= 0) {
-
-			if (Input.GetButtonDown("Jump")) {
-
-				jump = true;
-				jumpCd = 0.1f;
-				anim.SetBool("Jumping", true);
-			}
-		}
-
-		else {
-			jumpCd -= Time.deltaTime;
-		}
-
-		if (Input.GetButtonDown("Crouch")) {
-			crouch = true;
-		}
-
-		else if (Input.GetButtonUp("Crouch")) {
-			crouch = false;
-		}
-
-		if (horizontalMove == 0 && !jump) {
-			input = false;
-		}
-
-		else {
-			input = true;
-		}
-	}
-
-	void FixedUpdate () {
-
-		controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
-		jump = false;
-	}
-
-	public void OnLanding () {
-		anim.SetBool("Jumping", false);
-		jump = false;
-	}
-
-	public void OnCrouching (bool isCrouching) {
-		anim.SetBool("Crouching", isCrouching);
+		velocity.x = input.x * moveSpeed;
+		velocity.y += gravity * Time.deltaTime;
+		controller.Move(velocity * Time.deltaTime);
 	}
 }

@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour {
 
 	BoxCollider2D boxCollider;
 	RaycastOrigins raycastOrigins;
+	public CollisionInfo collisions;
 
 	void Start () {
 
@@ -26,6 +27,8 @@ public class PlayerController : MonoBehaviour {
 	public void Move (Vector3 velocity) {
 
 		UpdateRaycastOrigins();
+
+		collisions.Reset();
 
 		if (velocity.x != 0) {
 			HorizontalCollisions(ref velocity);
@@ -52,9 +55,11 @@ public class PlayerController : MonoBehaviour {
 			Debug.DrawRay(rayOrigin, Vector2.right * directionX * rayLength, Color.red);
 
 			if (hit) {
-
 				velocity.x = (hit.distance - skinWidth) * directionX;
 				rayLength = hit.distance;
+
+				collisions.left = directionX == -1;
+				collisions.right = directionX == 1;
 			}
 		}
 	}
@@ -73,9 +78,11 @@ public class PlayerController : MonoBehaviour {
 			Debug.DrawRay(rayOrigin, Vector2.up * directionY * rayLength, Color.red);
 
 			if (hit) {
-
 				velocity.y = (hit.distance - skinWidth) * directionY;
 				rayLength = hit.distance;
+
+				collisions.below = directionY == -1;
+				collisions.above = directionY == 1;
 			}
 		}
 	}
@@ -107,5 +114,17 @@ public class PlayerController : MonoBehaviour {
 
 		public Vector2 topLeft, topRight;
 		public Vector2 bottomLeft, bottomRight;
+	}
+
+	public struct CollisionInfo {
+
+		public bool above, below;
+		public bool left, right;
+
+		public void Reset () {
+
+			above = below = false;
+			left = right = false;
+		}
 	}
 }

@@ -485,7 +485,7 @@ Camera:
   far clip plane: 5000
   field of view: 40
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 6
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -509,7 +509,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.72, y: 4.78, z: -10}
+  m_LocalPosition: {x: 2.15, y: 1.3699996, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2146624547}
@@ -838,7 +838,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.035072923, y: -0.7021046}
+  m_Offset: {x: 0.035072923, y: -0.7097817}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -849,7 +849,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.50687265, y: 1.0034353}
+  m_Size: {x: 0.50687265, y: 0.9880811}
   m_EdgeRadius: 0
 --- !u!212 &1073521658
 SpriteRenderer:
@@ -907,7 +907,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1073521656}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.72, y: 4.28, z: 0}
+  m_LocalPosition: {x: 2.15, y: -0.43, z: 0}
   m_LocalScale: {x: 0.9, y: 1, z: 1}
   m_Children:
   - {fileID: 414502288}
@@ -946,6 +946,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfde9aaf35ec51f438260b7eb8a3bae0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jumpHeight: 2.5
+  timeToJumpApex: 0.3
+  moveSpeed: 6
 --- !u!95 &1073521662
 Animator:
   serializedVersion: 3
@@ -1225,14 +1228,14 @@ MonoBehaviour:
   m_YDamping: 0.25
   m_ZDamping: 0
   m_ScreenX: 0.5
-  m_ScreenY: 0.55
+  m_ScreenY: 0.65
   m_CameraDistance: 10
   m_DeadZoneWidth: 0
-  m_DeadZoneHeight: 0
+  m_DeadZoneHeight: 0.411
   m_DeadZoneDepth: 0
   m_UnlimitedSoftZone: 0
-  m_SoftZoneWidth: 0.8
-  m_SoftZoneHeight: 0.8
+  m_SoftZoneWidth: 0.36
+  m_SoftZoneHeight: 0.62
   m_BiasX: 0
   m_BiasY: 0
   m_CenterOnActivate: 1
@@ -12962,7 +12965,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &1881625612
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13020,7 +13023,7 @@ Transform:
   m_GameObject: {fileID: 1881625611}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 10}
-  m_LocalScale: {x: 4.6872616, y: 4.1684437, z: 4.446}
+  m_LocalScale: {x: 5.6289325, y: 5.1310306, z: 5.3392015}
   m_Children: []
   m_Father: {fileID: 519420032}
   m_RootOrder: 1
@@ -13425,7 +13428,7 @@ MonoBehaviour:
   m_Follow: {fileID: 1073521659}
   m_Lens:
     FieldOfView: 40
-    OrthographicSize: 5
+    OrthographicSize: 6
     NearClipPlane: 0.1
     FarClipPlane: 5000
     Dutch: 0

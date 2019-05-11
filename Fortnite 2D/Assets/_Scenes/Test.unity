@@ -1058,7 +1058,7 @@ GameObject:
   - component: {fileID: 1310956467}
   - component: {fileID: 1310956466}
   - component: {fileID: 1310956465}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Shredder
   m_TagString: Untagged
   m_Icon: {fileID: 0}

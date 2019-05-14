@@ -66,11 +66,7 @@ public class PlayerController : MonoBehaviour {
 				float slopeAngle = Vector2.Angle(hit.normal, Vector2.up);
 
 				if (i == 0 && slopeAngle <= maxClimbAngle) {
-
-					if (collisions.descendingSlope) {
-						collisions.descendingSlope = false;
-						velocity = collisions.velocityOld;
-					}
+					
 
 					float distanceToSlopeStart = 0;
 
@@ -80,7 +76,6 @@ public class PlayerController : MonoBehaviour {
 					}
 
 					ClimbSlope(ref velocity, slopeAngle);
-					velocity.x += distanceToSlopeStart * directionX;
 				}
 				
 				if (!collisions.climbingSlope || slopeAngle > maxClimbAngle) {

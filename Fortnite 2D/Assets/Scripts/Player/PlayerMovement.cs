@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityStandardAssets.CrossPlatformInput;
 
 [RequireComponent (typeof (PlayerController))]
 public class PlayerMovement : MonoBehaviour {
@@ -20,6 +19,7 @@ public class PlayerMovement : MonoBehaviour {
 
 	bool facingRight = true;
 
+	GameObject gameManager;
 	PlayerController controller;
 	Animator anim;
 
@@ -27,6 +27,7 @@ public class PlayerMovement : MonoBehaviour {
 
 		controller = GetComponent<PlayerController>();
 		anim = GetComponent<Animator>();
+		gameManager = GameObject.Find("Game Manager");
 
 		gravity = -(2 * jumpHeight) / Mathf.Pow(timeToJumpApex, 2);
 		jumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;

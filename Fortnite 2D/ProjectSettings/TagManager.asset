@@ -8,6 +8,7 @@ TagManager:
   - Walls
   - Props
   - Tree
+  - Shredder
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - 
   - Player
   - Ground
-  - Wall
+  - Shredder
   - Background
   - Object
   - 

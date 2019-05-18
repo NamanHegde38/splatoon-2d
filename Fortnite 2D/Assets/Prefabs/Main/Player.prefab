@@ -107,6 +107,7 @@ GameObject:
   - component: {fileID: 6791456272711391455}
   - component: {fileID: 6791456272711391451}
   - component: {fileID: 6791456272711391452}
+  - component: {fileID: 4940867668472693428}
   - component: {fileID: 6791456272711391449}
   - component: {fileID: 6791456272711391448}
   - component: {fileID: 6791456272711393061}
@@ -226,6 +227,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.50687265, y: 0.9880811}
   m_EdgeRadius: 0
+--- !u!114 &4940867668472693428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6791456272711391453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3e3b8ed53c50524981ff0beeb7dc342, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6791456272711391449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,9 +268,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfde9aaf35ec51f438260b7eb8a3bae0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 6
   jumpHeight: 2.5
   timeToJumpApex: 0.3
-  moveSpeed: 6
+  groundCheck: {fileID: 0}
 --- !u!114 &6791456272711393061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,6 +290,7 @@ MonoBehaviour:
   whatIsEnemies:
     serializedVersion: 2
     m_Bits: 4096
+  attackPos: {fileID: 6791456273236568998}
 --- !u!1 &6791456273236568999
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,7 +306,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6791456273236568998
 Transform:
   m_ObjectHideFlags: 0

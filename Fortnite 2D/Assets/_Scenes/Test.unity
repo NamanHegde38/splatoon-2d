@@ -752,7 +752,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.110562384, y: 0.86724925, z: -10}
+  m_LocalPosition: {x: -0.08381063, y: 0.86724925, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2146624547}
@@ -15724,6 +15724,7 @@ MonoBehaviour:
   winSize: {x: 2.5, y: 2.5}
   colourBox: {fileID: 1202879277}
   audioSource: {fileID: 1630751939}
+  cinemachineCam: {fileID: 2146624545}
 --- !u!4 &1947299597
 Transform:
   m_ObjectHideFlags: 0
@@ -16141,6 +16142,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2146624547}
   - component: {fileID: 2146624546}
+  - component: {fileID: 2146624548}
   m_Layer: 0
   m_Name: Cinemachine
   m_TagString: Untagged
@@ -16193,13 +16195,32 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2146624545}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.02252239, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1778889409}
   m_Father: {fileID: 519420032}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &2146624548
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2146624545}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1469a47cf9555ef40ae6079d23d9bfb7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &6791456273162517285
 PrefabInstance:
   m_ObjectHideFlags: 0

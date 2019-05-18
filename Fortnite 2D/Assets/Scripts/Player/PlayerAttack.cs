@@ -10,16 +10,15 @@ public class PlayerAttack : MonoBehaviour {
 	public float startTimeBtwAttack;
 	public float attackRange;
 	public LayerMask whatIsEnemies;
+	public Transform attackPos;
 
 	float timeBtwAttack = 0;
 
 	Animator anim;
-	Transform attackPos;
 
 	void Start() {
 
 		anim = GetComponent<Animator>();
-		attackPos = GameObject.Find("Attack Position").transform;
 	}
 
 	void Update() {

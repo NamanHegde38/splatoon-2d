@@ -1,80 +1,135 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent (typeof (PlayerController))]
 public class PlayerMovement : MonoBehaviour {
 
-	[SerializeField] float jumpHeight = 4;
-	[Range (.1f, 1f)] [SerializeField] float timeToJumpApex = .4f;
-	[SerializeField] float moveSpeed = 6;
+	public float moveSpeed = 6;
+	public float jumpHeight = 4;
+	[Range (.1f, 1f)] public float timeToJumpApex = .4f;
 
-	float accelerationTimeAirborne = .1f;
-	float accelerationTimeGrounded = .05f;
+	private const float _accelerationTimeAir = .1f;
+	private const float _accelerationTimeGround = .05f;
 
-	float gravity;
-	float jumpVelocity;
-	Vector3 velocity;
-	float velocityXSmoothing;
+	private float _gravity;
+	private float _jumpVelocity;
 
-	bool facingRight = true;
+	private float _jumpCooldown = 0.1f;
+	private bool _ableToJump;
 
-	GameObject gameManager;
-	PlayerController controller;
-	Animator anim;
+	private bool _hasSetCooldown;
 
-	void Start () {
+	private Vector3 _velocity;
+	private float _velocityXSmoothing;
+	private Vector2 _directionalInput;
 
-		controller = GetComponent<PlayerController>();
-		anim = GetComponent<Animator>();
-		gameManager = GameObject.Find("Game Manager");
+	private bool _facingRight = true;
 
-		gravity = -(2 * jumpHeight) / Mathf.Pow(timeToJumpApex, 2);
-		jumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
+	private PlayerController _controller;
+	private Animator _anim;
+
+	private static readonly int Jumping = Animator.StringToHash("Jumping");
+	private static readonly int Speed = Animator.StringToHash("Speed");
+
+	private void Start () {
+		SetComponents();
+		SetPhysics();
 	}
 
-	void Update () {
+	private void SetPhysics() {
+		_gravity = -(2 * jumpHeight) / Mathf.Pow(timeToJumpApex, 2);
+		_jumpVelocity = Mathf.Abs(_gravity) * timeToJumpApex;
+	}
 
-		if (controller.collisions.above || controller.collisions.below) {
-			velocity.y = 0;
+	private void SetComponents() {
+		_controller = GetComponent<PlayerController>();
+		_anim = GetComponent<Animator>();
+	}
+
+	public void SetDirectionalInput (Vector2 input) {
+		_directionalInput = input;
+	}
+
+	public void OnJumpInputDown () {
+		if (_ableToJump) {
+			_velocity.y = _jumpVelocity;
+			_ableToJump = false;
 		}
+	}
 
-		Vector2 input = new Vector2 (Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+	private void Update () {
+		SetAnimationParameters();
+		SetVelocity();
+		SetFlip();
+		SetJumpDelay();
+	}
 
-		anim.SetFloat("Speed", Mathf.Abs(velocity.x));
-
-		if (Input.GetButtonDown("Jump") && controller.collisions.below) {
-			velocity.y = jumpVelocity;
-		}
-
-		if (!controller.collisions.below) {
-			anim.SetBool("Jumping", true);
+	private void SetJumpDelay() {
+		if (!_controller.collisions.below) {
+			if (!_hasSetCooldown) {
+				_jumpCooldown = 0.1f;
+				_hasSetCooldown = true;
+			}
 		}
 
 		else {
-			anim.SetBool("Jumping", false);
+			_hasSetCooldown = false;
+			_ableToJump = true;
 		}
 
-		float targetVelocityX = input.x * moveSpeed;
-		velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirborne);
-		velocity.y += gravity * Time.deltaTime;
-		controller.Move(velocity * Time.deltaTime);
+		if (_jumpCooldown <= 0 && !_controller.collisions.below) {
+			_ableToJump = false;
+		}
 
-		if (velocity.x > 0 && !facingRight) {
+		else {
+			_jumpCooldown -= Time.deltaTime;
+			_ableToJump = true;
+		}
+	}
+
+	private void SetAnimationParameters() {
+		_anim.SetFloat(Speed, Mathf.Abs(_velocity.x));
+
+		if (!_controller.collisions.below) {
+			_anim.SetBool(Jumping, true);
+		}
+
+		else {
+			_anim.SetBool(Jumping, false);
+		}
+	}
+
+	private void SetVelocity() {
+		var targetVelocityX = _directionalInput.x * moveSpeed;
+
+		_velocity.x = Mathf.SmoothDamp(_velocity.x, targetVelocityX, ref _velocityXSmoothing,
+			(_controller.collisions.below) ? _accelerationTimeGround : _accelerationTimeAir);
+
+		_velocity.y += _gravity * Time.deltaTime;
+
+		_controller.Move(_velocity * Time.deltaTime);
+
+		if (_controller.collisions.above || _controller.collisions.below) {
+			_velocity.y = 0;
+		}
+	}
+
+	private void SetFlip () {
+		if (_velocity.x > 0 && !_facingRight) {
 			Flip();
 		}
 
-		if (velocity.x < 0 && facingRight) {
+		if (_velocity.x < 0 && _facingRight) {
 			Flip();
 		}
 	}
 
-	void Flip () {
+	private void Flip () {
+		_facingRight = !_facingRight;
 
-		facingRight = !facingRight;
+		var transformVariable = transform;
+		var scale = transformVariable.localScale;
+		scale.x *= -1;
 
-		Vector3 theScale = transform.localScale;
-		theScale.x *= -1;
-		transform.localScale = theScale;
+		transformVariable.localScale = scale;
 	}
 }

@@ -4,6 +4,10 @@
 public class PlayerMovement : MonoBehaviour {
 
 	public float moveSpeed = 6;
+	public float slowedMoveSpeed = 2.5f;
+	
+	private float _currentSpeed;
+
 	public float jumpHeight = 4;
 	[Range (.1f, 1f)] public float timeToJumpApex = .4f;
 
@@ -22,7 +26,9 @@ public class PlayerMovement : MonoBehaviour {
 	private float _velocityXSmoothing;
 	private Vector2 _directionalInput;
 
-	public bool _facingRight = true;
+	private string _groundInk;
+
+	public bool facingRight = true;
 
 	private PlayerController _controller;
 	private Animator _anim;
@@ -60,9 +66,49 @@ public class PlayerMovement : MonoBehaviour {
 		SetAnimationParameters();
 		SetVelocity();
 		SetJumpDelay();
+		CheckGroundInk();
+		SetMovementSpeed();
+	}
+
+	private void SetMovementSpeed() {
+		if (_groundInk == "Unpainted ground" || _groundInk == "Team painted ground") {
+			_currentSpeed = moveSpeed;
+		}
+
+		else if (_groundInk == "Enemy painted ground") {
+			_currentSpeed = slowedMoveSpeed;
+		}
+	}
+
+	private void CheckGroundInk() {
+		
+		if (_controller.collisions.below) {
+			_groundInk = _controller.CheckGroundTag();
+		}
+
+		else {
+			_groundInk = "Unpainted ground";
+		}
+	}
+
+	private void SetVelocity() {
+		
+		var targetVelocityX = _directionalInput.x * _currentSpeed;
+
+		_velocity.x = Mathf.SmoothDamp(_velocity.x, targetVelocityX, ref _velocityXSmoothing,
+			(_controller.collisions.below) ? _accelerationTimeGround : _accelerationTimeAir);
+
+		_velocity.y += _gravity * Time.deltaTime;
+
+		_controller.Move(_velocity * Time.deltaTime);
+
+		if (_controller.collisions.above || _controller.collisions.below) {
+			_velocity.y = 0;
+		}
 	}
 
 	private void SetJumpDelay() {
+		
 		if (!_controller.collisions.below) {
 			if (!_hasSetCooldown) {
 				_jumpCooldown = 0.1f;
@@ -97,23 +143,8 @@ public class PlayerMovement : MonoBehaviour {
 		}
 	}
 
-	private void SetVelocity() {
-		var targetVelocityX = _directionalInput.x * moveSpeed;
-
-		_velocity.x = Mathf.SmoothDamp(_velocity.x, targetVelocityX, ref _velocityXSmoothing,
-			(_controller.collisions.below) ? _accelerationTimeGround : _accelerationTimeAir);
-
-		_velocity.y += _gravity * Time.deltaTime;
-
-		_controller.Move(_velocity * Time.deltaTime);
-
-		if (_controller.collisions.above || _controller.collisions.below) {
-			_velocity.y = 0;
-		}
-	}
-
 	public void Flip () {
-		_facingRight = !_facingRight;
+		facingRight = !facingRight;
 
 		var transformVariable = transform;
 		var scale = transformVariable.localScale;

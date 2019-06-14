@@ -8,13 +8,12 @@ public class ParkourFinish : MonoBehaviour {
 
 	public Vector2 winSize;
 	public GameObject colourBox;
-	public GameObject audioSource;
-	public GameObject cinemachineCam;
+	private AudioSource _audioSource;
 
 	void Start() {
-        
-		
-    }
+
+		_audioSource = GetComponent<AudioSource>();
+	}
 
     
     void Update() {
@@ -22,8 +21,7 @@ public class ParkourFinish : MonoBehaviour {
 		Collider2D[] winningPlayer = Physics2D.OverlapBoxAll(transform.position, winSize, 0);
 		if (winningPlayer.Length != 0) {
 			colourBox.GetComponent<Animator>().SetBool("Win", true);
-			cinemachineCam.GetComponent<Animator>().SetBool("Win", true);
-			audioSource.GetComponent<AudioSource>().Play();
+			_audioSource.Play();
 			this.enabled = false;
 		}
 	}

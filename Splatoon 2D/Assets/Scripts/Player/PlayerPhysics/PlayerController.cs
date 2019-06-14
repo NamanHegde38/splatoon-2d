@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour {
 		transform.Translate(velocity);
 	}
 
-	private void HorizontalCollisions (ref Vector3 velocity) {
+	public void HorizontalCollisions (ref Vector3 velocity) {
 
 		float directionX = Mathf.Sign(velocity.x);
 		float rayLength = Mathf.Abs(velocity.x) + _skinWidth;
@@ -190,6 +190,21 @@ public class PlayerController : MonoBehaviour {
 		collisions.slopeAngle = slopeAngle;
 		collisions.descendingSlope = true;
 		collisions.below = true;
+	}
+
+	public string CheckGroundTag () {
+
+		RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, .5f, collisionMask);
+
+		if (hit) {
+			string groundTag = hit.collider.tag;
+			return groundTag;
+		}
+
+		else {
+			return null;
+		}
+		
 	}
 
 	private void UpdateRaycastOrigins () {

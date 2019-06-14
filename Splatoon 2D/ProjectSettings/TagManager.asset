@@ -4,11 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Ground
-  - Walls
-  - Props
-  - Tree
-  - Shredder
+  - Unpainted ground
+  - Team painted ground
+  - Enemy painted ground
   layers:
   - Default
   - TransparentFX
@@ -20,9 +18,9 @@ TagManager:
   - 
   - Player
   - Ground
-  - Shredder
+  - 
+  - 
   - Background
-  - Object
   - 
   - 
   - 
@@ -41,7 +39,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Shredder
   m_SortingLayers:
   - name: Default
     uniqueID: 0

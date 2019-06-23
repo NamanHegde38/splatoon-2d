@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerMovement))]
+[RequireComponent(typeof(PlayerSquid))]
 public class PlayerInput : MonoBehaviour {
 
 	private PlayerMovement _player;
+	private PlayerSquid _squid;
     
     private void Start () {
 	    SetComponents();
@@ -13,11 +15,13 @@ public class PlayerInput : MonoBehaviour {
 
     private void SetComponents() {
 	    _player = GetComponent<PlayerMovement>();
+		_squid = GetComponent<PlayerSquid>();
     }
 
     private void Update () {
 	    GetDirectionalInput();
 	    GetJumpInput();
+		GetCrouchInput();
     }
 
     private void GetJumpInput() {
@@ -30,4 +34,18 @@ public class PlayerInput : MonoBehaviour {
 	    var directionalInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 	    _player.SetDirectionalInput(directionalInput);
     }
+
+	private void GetCrouchInput() {
+		bool isSquid = false;
+		
+		if (Input.GetButton("Crouch")) {
+			isSquid = true;
+		}
+
+		else {
+			isSquid = false;
+		}
+
+		_squid.SetIsSquid(isSquid);
+	}
 }

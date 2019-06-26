@@ -149,7 +149,6 @@ GameObject:
   - component: {fileID: 6791456272711391454}
   - component: {fileID: 8865121657750756635}
   - component: {fileID: 4670331363540791404}
-  - component: {fileID: 6791456272711391451}
   - component: {fileID: 6791456272711391452}
   - component: {fileID: 4940867668472693428}
   - component: {fileID: 6791456272711391449}
@@ -223,25 +222,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6791456272711391453}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!95 &6791456272711391451
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6791456272711391453}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6809c84c2b471d044ac0f5b4e6e58ee6, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!61 &6791456272711391452
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -315,7 +295,7 @@ MonoBehaviour:
   squidInkSpeed: 10
   squidSlowedSpeed: 1
   jumpHeight: 2.5
-  timeToJumpApex: 0.4
+  timeToJumpApex: 0.3
   facingRight: 1
 --- !u!114 &165689611494246741
 MonoBehaviour:
@@ -329,9 +309,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 816f5362955f3b64284772a63f973c02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isSquid: 0
-  _inklingSize: {x: 1, y: 1}
-  _squidSize: {x: 1, y: 0.25}
+  isSquid: 0
+  sprite: {fileID: 2100000, guid: 41a03108834d5d04b822880e42fdfbf9, type: 2}
+  receivingCrouchInput: 0
+  inklingSize: {x: 1, y: 1}
+  squidSize: {x: 1, y: 0.25}
 --- !u!1 &6791456273236568999
 GameObject:
   m_ObjectHideFlags: 0

@@ -443,7 +443,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.110562384, y: 0.86724925, z: -10}
+  m_LocalPosition: {x: -0.110562384, y: 7.5672493, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2146624547}
@@ -569,7 +569,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1313628019}
-  - component: {fileID: 1313628018}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -577,20 +576,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1313628018
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1313628017}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 550f68006f7c66841ae29faf12571d1a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 6791456272711391453, guid: 0439bd46bb997f64d9aec1cfd706eb15,
-    type: 3}
 --- !u!4 &1313628019
 Transform:
   m_ObjectHideFlags: 0
@@ -842,7 +827,7 @@ PrefabInstance:
     - target: {fileID: 6791456272711391454, guid: 0439bd46bb997f64d9aec1cfd706eb15,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 6.7
       objectReference: {fileID: 0}
     - target: {fileID: 6791456272711391454, guid: 0439bd46bb997f64d9aec1cfd706eb15,
         type: 3}
@@ -889,10 +874,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 165689611494246741, guid: 0439bd46bb997f64d9aec1cfd706eb15,
-        type: 3}
-      propertyPath: sprite
-      value: 
-      objectReference: {fileID: 2100000, guid: 41a03108834d5d04b822880e42fdfbf9, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0439bd46bb997f64d9aec1cfd706eb15, type: 3}

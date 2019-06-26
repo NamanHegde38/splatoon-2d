@@ -3,10 +3,8 @@
 namespace Player.PlayerPhysics
 {
 	public class PlayerSquid : MonoBehaviour {
-    
-		private PlayerController _controller;
-
-		private bool _isSquid;
+		
+		public bool isSquid;
 
 		public Material sprite;
 
@@ -14,43 +12,37 @@ namespace Player.PlayerPhysics
 
 		[SerializeField] private Vector2 inklingSize = new Vector2(1f, 1f);
 		[SerializeField] private Vector2 squidSize = new Vector2(1f, 0.25f);
-    
-		private void Start()
-		{
-			CheckIfSquid();
-		}
+		private BoxCollider2D _boxCollider2D;
 
-		private void SetComponents() {
-			_controller = GetComponent<PlayerController>(); 
+		private void Start() {
+			_boxCollider2D = GetComponent<BoxCollider2D>();
 		}
 
 		private void Update() {
+			// ReSharper disable once Unity.PerformanceCriticalCodeInvocation
+			CheckIfSquid();
 		}
 
 		public void SetIsSquid(bool crouchInput) {
-			if (crouchInput) {
-				receivingCrouchInput = true;
-			}
-			else {
-				receivingCrouchInput = false;
-			}
+			receivingCrouchInput = crouchInput;
 		}
 
 		private void SquidForm() {
-			if (!_isSquid)
-			{
-				
-			} 
-			
-			GetComponent<BoxCollider2D>().size = squidSize;
-			GetComponent<BoxCollider2D>().offset = new Vector2(0, -0.37f);
-			sprite.color = Color.blue;
+			if (!isSquid) {
+				_boxCollider2D.size = squidSize;
+				_boxCollider2D.offset = new Vector2(0, -0.37f);
+				sprite.color = Color.blue;
+				isSquid = true;
+			}
 		}
 
 		private void InklingForm() {
-			GetComponent<BoxCollider2D>().size = inklingSize;
-			GetComponent<BoxCollider2D>().offset = new Vector2(0, 0);
-			sprite.color = Color.red;
+			if (isSquid) {
+				_boxCollider2D.size = inklingSize;
+				_boxCollider2D.offset = new Vector2(0, 0);
+				sprite.color = Color.red;
+				isSquid = false;
+			}
 		}
 
 		private void CheckIfSquid() {

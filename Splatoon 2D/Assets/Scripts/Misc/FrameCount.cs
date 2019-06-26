@@ -1,38 +1,39 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
+﻿using System.Globalization;
 using TMPro;
-using System.Collections;
-using System.Collections.Generic;
+using UnityEngine;
 
 //Script by AquaArmour
 
-public class FrameCount : MonoBehaviour {
+namespace Misc
+{
+	public class FrameCount : MonoBehaviour {
 
-	public float m_refreshTime = 0.5f;
+		public float refreshTime = 0.5f;
 
-	private int m_frameCounter = 0;
-	private float m_timeCounter = 0.0f;
-	private float m_lastFramerate = 0.0f;
-	private TextMeshProUGUI text;
+		private int _frameCounter;
+		private float _timeCounter;
+		private float _lastFramerate;
+		private TextMeshProUGUI _text;
 
-	void Start() {
+		private void Start() {
 
-		text = GetComponent<TextMeshProUGUI>();
-    }
-
-    void Update() {
-
-		if (m_timeCounter < m_refreshTime) {
-			m_timeCounter += Time.deltaTime;
-			m_frameCounter++;
+			_text = GetComponent<TextMeshProUGUI>();
 		}
 
-		else {
-			m_lastFramerate = (float)m_frameCounter / m_timeCounter;
-			m_frameCounter = 0;
-			m_timeCounter = 0.0f;
-		}
+		private void Update() {
 
-		text.text = Mathf.Round(m_lastFramerate).ToString() + " fps";
+			if (_timeCounter < refreshTime) {
+				_timeCounter += Time.deltaTime;
+				_frameCounter++;
+			}
+
+			else {
+				_lastFramerate = _frameCounter / _timeCounter;
+				_frameCounter = 0;
+				_timeCounter = 0.0f;
+			}
+
+			_text.text = Mathf.Round(_lastFramerate).ToString(CultureInfo.InvariantCulture) + " fps";
+		}
 	}
 }

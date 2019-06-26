@@ -1,58 +1,65 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-[RequireComponent (typeof(PlayerController))]
-public class PlayerSquid : MonoBehaviour {
+namespace Player.PlayerPhysics
+{
+	public class PlayerSquid : MonoBehaviour {
     
-    private PlayerController _controller;
+		private PlayerController _controller;
 
-	public Material sprite;
+		private bool _isSquid;
 
-	[HideInInspector] public bool _isSquid;
+		public Material sprite;
 
-	[SerializeField] private Vector2 _inklingSize = new Vector2(1f, 1f);
-	[SerializeField] private Vector2 _squidSize = new Vector2(1f, 0.25f);
+		[HideInInspector] public bool receivingCrouchInput;
+
+		[SerializeField] private Vector2 inklingSize = new Vector2(1f, 1f);
+		[SerializeField] private Vector2 squidSize = new Vector2(1f, 0.25f);
     
-    private void Start() {
-		
-    }
-
-    private void SetComponents() {
-		_controller = GetComponent<PlayerController>(); 
-	}
-
-    private void Update() {
-		CheckIfSquid();
-    }
-
-	public void SetIsSquid(bool crouchInput) {
-		if (crouchInput) {
-			_isSquid = true;
+		private void Start()
+		{
+			CheckIfSquid();
 		}
-		else {
-			_isSquid = false;
+
+		private void SetComponents() {
+			_controller = GetComponent<PlayerController>(); 
 		}
-	}
 
-	private void SquidForm() {
-		GetComponent<BoxCollider2D>().size = _squidSize;
-		GetComponent<BoxCollider2D>().offset = new Vector2(0, -0.37f);
-		sprite.color = Color.blue;
-	}
-
-	private void InklingForm() {
-		GetComponent<BoxCollider2D>().size = _inklingSize;
-		GetComponent<BoxCollider2D>().offset = new Vector2(0, 0);
-		sprite.color = Color.red;
-	}
-
-	private void CheckIfSquid() {
-		if (_isSquid) {
-			SquidForm();
+		private void Update() {
 		}
-		else {
-			InklingForm();
+
+		public void SetIsSquid(bool crouchInput) {
+			if (crouchInput) {
+				receivingCrouchInput = true;
+			}
+			else {
+				receivingCrouchInput = false;
+			}
+		}
+
+		private void SquidForm() {
+			if (!_isSquid)
+			{
+				
+			} 
+			
+			GetComponent<BoxCollider2D>().size = squidSize;
+			GetComponent<BoxCollider2D>().offset = new Vector2(0, -0.37f);
+			sprite.color = Color.blue;
+		}
+
+		private void InklingForm() {
+			GetComponent<BoxCollider2D>().size = inklingSize;
+			GetComponent<BoxCollider2D>().offset = new Vector2(0, 0);
+			sprite.color = Color.red;
+		}
+
+		private void CheckIfSquid() {
+			if (receivingCrouchInput) {
+				SquidForm();
+			}
+			else {
+				InklingForm();
+			}
 		}
 	}
 }

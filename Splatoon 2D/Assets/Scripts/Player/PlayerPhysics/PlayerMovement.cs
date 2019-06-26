@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Player.PlayerPhysics;
+using UnityEngine;
 
 [RequireComponent (typeof (PlayerController))]
 public class PlayerMovement : MonoBehaviour {
@@ -156,7 +157,7 @@ public class PlayerMovement : MonoBehaviour {
 	}
 
 	private void CheckIfSquid() {
-		_isSquid = _squid._isSquid;
+		_isSquid = _squid.receivingCrouchInput;
 	}
 
 	private void SetAnimationParameters() {

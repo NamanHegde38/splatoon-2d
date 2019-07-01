@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using Player.PlayerPhysics;
+using Player;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerMovement))]

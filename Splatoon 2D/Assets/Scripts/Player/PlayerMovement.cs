@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 
-namespace Player.PlayerPhysics {
+namespace Player {
 	[RequireComponent (typeof (PlayerController))]
+	[RequireComponent (typeof (PlayerManager))]
+	[RequireComponent (typeof (PlayerSquid))]
 	public class PlayerMovement : MonoBehaviour {
 
 		public float moveSpeed = 6f;
@@ -13,17 +15,20 @@ namespace Player.PlayerPhysics {
 		
 		private float _currentSpeed;
 	
-		public float jumpHeight = 4;
+		public float jumpHeight = 4f;
 		[Range (.1f, 1f)] public float timeToJumpApex = .4f;
 
 		private const float AccelerationTimeAir = .1f;
 		private const float AccelerationTimeGround = .05f;
+		private const float AccelerationTimeSquid = .25f;
+
+		private float _currentAccelerationTime;
 
 		private float _gravity;
 
 		private float _jumpVelocity;
 
-		private float _jumpCooldown = 0.1f;
+		private float _jumpCooldown = .1f;
 		private bool _ableToJump;
 
 		private bool _hasSetCooldown;
@@ -32,15 +37,16 @@ namespace Player.PlayerPhysics {
 		private float _velocityXSmoothing;
 		private Vector2 _directionalInput;
 
-		private string _groundInk;
+	
 
 		public bool facingRight = true;
 
 		private bool _isSquid;
 		
 		private PlayerController _controller;
+		private PlayerManager _manager;
 		private PlayerSquid _squid;
-		
+
 		private void Start () {
 			SetComponents();
 			SetPhysics();
@@ -53,6 +59,7 @@ namespace Player.PlayerPhysics {
 
 		private void SetComponents() {
 			_controller = GetComponent<PlayerController>();
+			_manager = GetComponent<PlayerManager>();
 			_squid = GetComponent<PlayerSquid>();
 		}
 
@@ -78,18 +85,51 @@ namespace Player.PlayerPhysics {
 		}
 
 		private void Update () {
+			SetMovementSpeed();
 			SetVelocity();
 			SetJumpDelay();
-			CheckGroundInk();
-			SetMovementSpeed();
 			CheckIfSquid();
+			
 		}
 
+		private void SetMovementSpeed() {
+			var groundInk = _manager.groundInk;
+			if (_isSquid) {
+				if (groundInk == _manager.unpaintedGround) {
+					_currentSpeed = squidMoveSpeed;
+				}
+				else if (groundInk == _manager.teamPaintedGround) {
+					_currentSpeed = squidInkSpeed;
+				}
+				else if (groundInk == _manager.enemyPaintedGround) {
+					_currentSpeed = squidSlowedSpeed;
+				}
+
+				_currentAccelerationTime = AccelerationTimeSquid;
+			}
+
+			else if (!_isSquid){
+				if (groundInk == _manager.unpaintedGround) {
+					_currentSpeed = moveSpeed;
+				}
+				
+				else if (groundInk == _manager.teamPaintedGround) {
+					_currentSpeed = moveSpeed;
+				}
+				
+				else if (groundInk == _manager.enemyPaintedGround) {
+					_currentSpeed = slowedMoveSpeed;
+				}
+
+				_currentAccelerationTime = AccelerationTimeGround;
+			}
+		}
+		
 		private void SetVelocity() {
 			var targetVelocityX = _directionalInput.x * _currentSpeed;
 
 			_velocity.x = Mathf.SmoothDamp(_velocity.x, targetVelocityX, ref _velocityXSmoothing,
-				(_controller.collisions.Below) ? AccelerationTimeGround : AccelerationTimeAir);
+				(_controller.collisions.Below) ? _currentAccelerationTime : AccelerationTimeAir);
 
 			_velocity.y += _gravity * Time.deltaTime;
 
@@ -97,30 +137,6 @@ namespace Player.PlayerPhysics {
 
 			if (_controller.collisions.Above || _controller.collisions.Below) {
 				_velocity.y = 0;
-			}
-		}
-
-		private void SetMovementSpeed() {
-			if (_isSquid) {
-				// ReSharper disable once ConvertIfStatementToSwitchStatement
-				if (_groundInk == "Unpainted ground")
-					_currentSpeed = squidMoveSpeed;
-				else if (_groundInk == "Team painted ground")
-					_currentSpeed = squidInkSpeed;
-				else if (_groundInk == "Enemy painted ground") _currentSpeed = squidSlowedSpeed;
-			}
-
-			else {
-				// ReSharper disable once ConvertIfStatementToSwitchStatement
-				if (_groundInk == "Unpainted ground" || _groundInk == "Team painted ground")
-					_currentSpeed = moveSpeed;
-				else if (_groundInk == "Enemy painted ground") _currentSpeed = slowedMoveSpeed;
-			}
-		}
-
-		private void CheckGroundInk() {
-			if (_controller.collisions.Below) {
-				_groundInk = _controller.CheckGroundTag();
 			}
 		}
 

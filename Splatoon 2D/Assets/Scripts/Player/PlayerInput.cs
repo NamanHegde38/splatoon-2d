@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Player.PlayerPhysics {
+namespace Player {
 	[RequireComponent(typeof(PlayerMovement))]
 	[RequireComponent(typeof(PlayerSquid))]
 	public class PlayerInput : MonoBehaviour {

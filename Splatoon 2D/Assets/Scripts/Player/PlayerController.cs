@@ -1,8 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
 
-namespace Player.PlayerPhysics
-{
+namespace Player  {
 	[RequireComponent(typeof (BoxCollider2D))]
 	[SuppressMessage("ReSharper", "NotAccessedField.Global")]
 	public class PlayerController : MonoBehaviour {
@@ -194,22 +193,7 @@ namespace Player.PlayerPhysics
 			collisions.DescendingSlope = true;
 			collisions.Below = true;
 		}
-
-		public string CheckGroundTag () {
-
-			var hit = Physics2D.Raycast(transform.position, Vector2.down, .5f, collisionMask);
-
-			if (hit) {
-				var groundTag = hit.collider.tag;
-				return groundTag;
-			}
-
-			else {
-				return null;
-			}
 		
-		}
-
 		private void UpdateRaycastOrigins () {
 
 			var bounds = _boxCollider.bounds;

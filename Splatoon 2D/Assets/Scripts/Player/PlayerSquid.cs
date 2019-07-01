@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Player.PlayerPhysics
+namespace Player
 {
 	public class PlayerSquid : MonoBehaviour {
 		

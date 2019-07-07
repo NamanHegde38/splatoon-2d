@@ -47,8 +47,10 @@
             <e p="PlayerSquid.cs" t="Include" />
           </e>
           <e p="Weapon" t="Include">
-            <e p="AssaultRifle.cs" t="Include" />
-            <e p="Weapon.cs" t="Include" />
+            <e p="Shooter" t="Include">
+              <e p="Shooter.cs" t="Include" />
+            </e>
+            <e p="Weapon.asmdef" t="Include" />
           </e>
         </e>
       </e>
@@ -57,6 +59,7 @@
       <e p="Player.csproj" t="IncludeRecursive" />
       <e p="Splatoon 2D.sln" t="IncludeFlat" />
       <e p="Temp\bin" t="ExcludeRecursive" />
+      <e p="Weapon.csproj" t="IncludeRecursive" />
     </e>
   </component>
 </project>

@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Player
-{
+namespace Player {
 	public class PlayerSquid : MonoBehaviour {
 		
 		public bool isSquid;

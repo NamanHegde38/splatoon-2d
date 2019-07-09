@@ -19,8 +19,8 @@ namespace Player {
 		[Range (.1f, 1f)] public float timeToJumpApex = .4f;
 
 		private const float AccelerationTimeAir = .1f;
-		private const float AccelerationTimeGround = .05f;
-		private const float AccelerationTimeSquid = .25f;
+		public float accelerationTimeGround = .05f;
+		public float accelerationTimeSquid = .25f;
 
 		private float _currentAccelerationTime;
 
@@ -105,7 +105,7 @@ namespace Player {
 					_currentSpeed = squidSlowedSpeed;
 				}
 
-				_currentAccelerationTime = AccelerationTimeSquid;
+				_currentAccelerationTime = accelerationTimeSquid;
 			}
 
 			else if (!_isSquid){
@@ -121,7 +121,7 @@ namespace Player {
 					_currentSpeed = slowedMoveSpeed;
 				}
 
-				_currentAccelerationTime = AccelerationTimeGround;
+				_currentAccelerationTime = accelerationTimeGround;
 			}
 		}
 		

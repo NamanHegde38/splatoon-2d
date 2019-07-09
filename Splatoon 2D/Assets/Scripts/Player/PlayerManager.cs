@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 
 namespace Player {
-	
 	[RequireComponent(typeof(PlayerController))]
 	public class PlayerManager : MonoBehaviour {
 
 		private PlayerController _controller;
 		private PlayerHealth _playerHealth;
+		
+		private float _tickTimeBetweenDamage;
 		
 		private LayerMask _collisionMask;
 		
@@ -28,6 +29,7 @@ namespace Player {
 		private void Update() {
 			CheckGroundInk();
 			OnEnemyInk();
+			Debug.Log(_playerHealth.health);
 		}
 
 		private string CheckGroundTag () {
@@ -52,9 +54,15 @@ namespace Player {
 		}
 
 		private void OnEnemyInk() {
-			if (groundInk == enemyPaintedGround) {
-				if (_playerHealth.health > 25) {
-					_playerHealth.TakeDamage(1);
+			_tickTimeBetweenDamage -= Time.deltaTime;
+			
+			if (_tickTimeBetweenDamage <= 0) {
+				// ReSharper disable once RedundantAssignment
+				_tickTimeBetweenDamage = .25f;
+				if (groundInk == enemyPaintedGround) {
+					if (_playerHealth.health > 25) {
+						_playerHealth.TakeDamage(5);
+					}
 				}
 			}
 		}

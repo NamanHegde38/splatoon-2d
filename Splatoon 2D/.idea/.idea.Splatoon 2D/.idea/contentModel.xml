@@ -35,6 +35,7 @@
         </e>
         <e p="Scripts" t="Include">
           <e p="Misc" t="Include">
+            <e p="EditorCompileTimer.cs" t="Include" />
             <e p="FrameCount.cs" t="Include" />
           </e>
           <e p="Player" t="Include">
@@ -47,7 +48,7 @@
             <e p="PlayerSquid.cs" t="Include" />
           </e>
           <e p="Weapon" t="Include">
-            <e p="Shooter" t="Include">
+            <e p="Shooters" t="Include">
               <e p="Shooter.cs" t="Include" />
             </e>
             <e p="Weapon.asmdef" t="Include" />

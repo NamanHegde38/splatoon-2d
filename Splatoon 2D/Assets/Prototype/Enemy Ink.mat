@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Team painted Ground
+  m_Name: Enemy Ink
   m_Shader: {fileID: 10755, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -73,5 +73,5 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.8773585, g: 0.22761661, b: 0.81060445, a: 1}
+    - _Color: {r: 0.35081145, g: 0.8490566, b: 0.22828408, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

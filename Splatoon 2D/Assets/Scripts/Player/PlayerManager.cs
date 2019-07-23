@@ -29,7 +29,6 @@ namespace Player {
 		private void Update() {
 			CheckGroundInk();
 			OnEnemyInk();
-			Debug.Log(_playerHealth.health);
 		}
 
 		private string CheckGroundTag () {

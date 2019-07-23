@@ -419,7 +419,7 @@ Camera:
   far clip plane: 5000
   field of view: 40
   orthographic: 1
-  orthographic size: 6.85
+  orthographic size: 15
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -443,7 +443,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0838958, y: 0.86724925, z: -10}
+  m_LocalPosition: {x: -0.18371344, y: 1.8990855, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2146624547}
@@ -569,6 +569,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1313628019}
+  - component: {fileID: 1313628018}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -576,6 +577,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1313628018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1313628017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ef6748a15cb0541b4464302d00dd24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1313628019
 Transform:
   m_ObjectHideFlags: 0
@@ -758,7 +771,7 @@ MonoBehaviour:
   m_Follow: {fileID: 1073521659}
   m_Lens:
     FieldOfView: 40
-    OrthographicSize: 6.85
+    OrthographicSize: 15
     NearClipPlane: 0.1
     FarClipPlane: 5000
     Dutch: 0
@@ -872,11 +885,6 @@ PrefabInstance:
     - target: {fileID: 6791456272711391454, guid: 0439bd46bb997f64d9aec1cfd706eb15,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1864995499666365442, guid: 0439bd46bb997f64d9aec1cfd706eb15,
-        type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

@@ -33,10 +33,12 @@
             </e>
           </e>
         </e>
+        <e p="InkProjectile.cs" t="Include" />
         <e p="Scripts" t="Include">
           <e p="Misc" t="Include">
             <e p="EditorCompileTimer.cs" t="Include" />
             <e p="FrameCount.cs" t="Include" />
+            <e p="FrameRateLimiter.cs" t="Include" />
           </e>
           <e p="Player" t="Include">
             <e p="Player.asmdef" t="Include" />
@@ -50,6 +52,7 @@
           <e p="Weapon" t="Include">
             <e p="Shooters" t="Include">
               <e p="Shooter.cs" t="Include" />
+              <e p="ShooterManager.cs" t="Include" />
             </e>
             <e p="Weapon.asmdef" t="Include" />
           </e>

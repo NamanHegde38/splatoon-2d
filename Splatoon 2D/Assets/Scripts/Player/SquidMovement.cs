@@ -3,15 +3,15 @@ using UnityEngine;
 
 namespace Player {
     [RequireComponent(typeof(PlayerController))]
-    public class PlayerMovement : MonoBehaviour {
+    public class SquidMovement : MonoBehaviour {
         public float maxJumpHeight = 4;
         public float minJumpHeight = 1;
         public float timeToJumpApex = .4f;
-        private const float AccelerationTimeAirborne = .2f;
-        private const float AccelerationTimeGrounded = .1f;
-        private const float MoveSpeed = 6;
+        private const float AccelerationTimeAirborne = .5f;
+        private const float AccelerationTimeGrounded = .3f;
+        private const float MoveSpeed = 10;
 
-        private float _gravity;
+        [HideInInspector] public float gravity;
         private float _maxJumpVelocity;
         private float _minJumpVelocity;
         [HideInInspector] public Vector3 velocity;
@@ -20,34 +20,22 @@ namespace Player {
         private PlayerController _controller;
 
         private Vector2 _directionalInput;
-        [HideInInspector] public float gravityScale;
 
         private void Start() {
-            SetComponents();
-            SetPhysics();
+            _controller = GetComponent<PlayerController>();
+
+            gravity = -(2 * maxJumpHeight) / Mathf.Pow(timeToJumpApex, 2);
+            _maxJumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
+            _minJumpVelocity = Mathf.Sqrt(2 * Mathf.Abs(gravity) * minJumpHeight);
         }
 
-        private void SetComponents() {
-            _controller = GetComponent<PlayerController>();
-        }
-        
-        private void SetPhysics() {
-            _gravity = -(2 * maxJumpHeight) / Mathf.Pow(timeToJumpApex, 2);
-            _maxJumpVelocity = Mathf.Abs(_gravity) * timeToJumpApex;
-            _minJumpVelocity = Mathf.Sqrt(2 * Mathf.Abs(_gravity) * minJumpHeight);
-        }
-        
         private void Update() {
             CalculateVelocity();
-            SetMovement();
-        }
-
-        private void SetMovement() {
             _controller.Move(velocity * Time.deltaTime, _directionalInput);
 
             if (_controller.collisions.Above || _controller.collisions.Below) {
                 if (_controller.collisions.SlidingDownMaxSlope) {
-                    velocity.y += _controller.collisions.SlopeNormal.y * -_gravity * Time.deltaTime;
+                    velocity.y += _controller.collisions.SlopeNormal.y * -gravity * Time.deltaTime;
                 }
                 else {
                     velocity.y = 0;
@@ -85,7 +73,7 @@ namespace Player {
             var targetVelocityX = _directionalInput.x * MoveSpeed;
             velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref _velocityXSmoothing,
                 (_controller.collisions.Below) ? AccelerationTimeGrounded : AccelerationTimeAirborne);
-            velocity.y += (_gravity * gravityScale) * Time.deltaTime;
+            velocity.y += gravity * Time.deltaTime;
         }
     }
 }

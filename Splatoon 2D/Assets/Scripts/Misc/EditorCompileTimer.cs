@@ -1,48 +1,35 @@
-﻿/* 
-    ------------------- Code Monkey -------------------
-
-    Thank you for downloading this Code Monkey project
-    I hope you find it useful in your own projects
-    If you have any questions let me know
-    Cheers!
-
-               unitycodemonkey.com
-    --------------------------------------------------
- */
-
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEditor;
 
 [ExecuteInEditMode]
 public class EditorCompileTimer : MonoBehaviour {
 
-    private double compileStartTime;
-    private bool isCompiling = false;
-
+    private double _compileStartTime;
+    private bool _isCompiling;
+    
     private void Update() {
-        if (isCompiling) {
+        if (_isCompiling) {
             if (!EditorApplication.isCompiling) {
-                isCompiling = false;
+                _isCompiling = false;
                 CompileFinished();
-            }
-        } else {
+            }            
+        }
+
+        else {
             if (EditorApplication.isCompiling) {
-                isCompiling = true;
+                _isCompiling = true;
                 CompileStarted();
-            } 
+            }
         }
     }
 
     private void CompileStarted() {
-        Debug.Log("Compile started...");
-        compileStartTime = EditorApplication.timeSinceStartup;
+        Debug.Log("Compile started ...");
+        _compileStartTime = EditorApplication.timeSinceStartup;
     }
 
     private void CompileFinished() {
-        double compileTime = EditorApplication.timeSinceStartup - compileStartTime;
-        Debug.Log("Compile Finished: " + compileTime.ToString("F2") + "s");
+        var compileTime = EditorApplication.timeSinceStartup - _compileStartTime;
+        Debug.Log("Compile finished " + compileTime.ToString("F2") + "s");
     }
-
 }

@@ -4,9 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Unpainted ground
-  - Team painted ground
-  - Enemy painted ground
+  - Through
   layers:
   - Default
   - TransparentFX
@@ -18,14 +16,6 @@ TagManager:
   - 
   - Player
   - Ground
-  - Team Ink Projectile
-  - 
-  - Background
-  - 
-  - 
-  - 
-  - 
-  - Shredder
   - 
   - 
   - 
@@ -39,7 +29,15 @@ TagManager:
   - 
   - 
   - 
-  - Post Processing
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   m_SortingLayers:
   - name: Default
     uniqueID: 0

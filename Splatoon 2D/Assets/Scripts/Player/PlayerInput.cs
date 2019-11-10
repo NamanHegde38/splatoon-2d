@@ -1,13 +1,16 @@
 ﻿using UnityEngine;
 
 namespace Player {
+    [RequireComponent(typeof(PlayerHandler))]
     [RequireComponent(typeof(PlayerMovement))]
     public class PlayerInput : MonoBehaviour {
 
+        private PlayerHandler _playerHandler;
         private PlayerMovement _player;
 
         private void Start() {
             _player = GetComponent<PlayerMovement>();
+            _playerHandler = GetComponent<PlayerHandler>();
         }
 
         private void Update() {

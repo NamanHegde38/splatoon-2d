@@ -33,8 +33,8 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerMovement.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/BetterJump.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerInput.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerHandler.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/SquidMovement.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Misc/PlatformController.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -67,11 +67,15 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/RaycastController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerRaycast.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Misc/PlatformController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerInput.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Misc/CameraFollow.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Game/CameraFollow.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Game/GameHandler.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/SquidMovement.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerMovement.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/BetterJump.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerInput.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerHandler.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerMovement.cs" />
       </list>
     </option>
   </component>
@@ -149,7 +153,10 @@
       <workItem from="1572338433089" duration="10924000" />
       <workItem from="1572608573598" duration="2222000" />
       <workItem from="1572629661806" duration="10114000" />
-      <workItem from="1572707497275" duration="7864000" />
+      <workItem from="1572707497275" duration="7865000" />
+      <workItem from="1572723495314" duration="5582000" />
+      <workItem from="1572794932403" duration="5227000" />
+      <workItem from="1573373548426" duration="700000" />
     </task>
     <servers />
   </component>

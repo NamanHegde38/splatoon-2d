@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Through
+  - Un-Painted Ground
+  - Team-Painted Ground
+  - Enemy-Painted Ground
   layers:
   - Default
   - TransparentFX

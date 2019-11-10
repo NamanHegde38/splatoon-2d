@@ -7,42 +7,31 @@ namespace Player {
         public float maxJumpHeight = 4;
         public float minJumpHeight = 1;
         public float timeToJumpApex = .4f;
-        private const float AccelerationTimeAirborne = .2f;
-        private const float AccelerationTimeGrounded = .1f;
-        private const float MoveSpeed = 6;
+        private const float AccelerationTimeAirborne = .3f;
+        private const float AccelerationTimeGrounded = .15f;
+        [SerializeField] private float moveSpeed = 6f;
 
         private float _gravity;
+        [HideInInspector] public float gravityScale;
         private float _maxJumpVelocity;
         private float _minJumpVelocity;
         [HideInInspector] public Vector3 velocity;
         private float _velocityXSmoothing;
 
         private PlayerController _controller;
+        private PlayerRaycast _raycastController;
 
         private Vector2 _directionalInput;
-        [HideInInspector] public float gravityScale;
-
-        private void Start() {
-            SetComponents();
-            SetPhysics();
-        }
-
-        private void SetComponents() {
-            _controller = GetComponent<PlayerController>();
-        }
         
-        private void SetPhysics() {
+        private void Start() {
+            _controller = GetComponent<PlayerController>();
             _gravity = -(2 * maxJumpHeight) / Mathf.Pow(timeToJumpApex, 2);
             _maxJumpVelocity = Mathf.Abs(_gravity) * timeToJumpApex;
             _minJumpVelocity = Mathf.Sqrt(2 * Mathf.Abs(_gravity) * minJumpHeight);
         }
-        
+
         private void Update() {
             CalculateVelocity();
-            SetMovement();
-        }
-
-        private void SetMovement() {
             _controller.Move(velocity * Time.deltaTime, _directionalInput);
 
             if (_controller.collisions.Above || _controller.collisions.Below) {
@@ -82,7 +71,7 @@ namespace Player {
         }
 
         private void CalculateVelocity() {
-            var targetVelocityX = _directionalInput.x * MoveSpeed;
+            var targetVelocityX = _directionalInput.x * moveSpeed;
             velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref _velocityXSmoothing,
                 (_controller.collisions.Below) ? AccelerationTimeGrounded : AccelerationTimeAirborne);
             velocity.y += (_gravity * gravityScale) * Time.deltaTime;

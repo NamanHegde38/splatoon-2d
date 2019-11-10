@@ -14,9 +14,9 @@
           <e p="Player" t="Include">
             <e p="BetterJump.cs" t="Include" />
             <e p="PlayerController.cs" t="Include" />
+            <e p="PlayerHandler.cs" t="Include" />
             <e p="PlayerInput.cs" t="Include" />
             <e p="PlayerMovement.cs" t="Include" />
-            <e p="SquidMovement.cs" t="Include" />
           </e>
         </e>
       </e>

@@ -10,9 +10,12 @@ namespace Player {
 	[HideInInspector]
 	public Vector2 playerInput;
 
+	private PlayerHandler _playerHandler;
+
 	public override void Start() {
 		base.Start ();
 		collisions.FaceDir = 1;
+		_playerHandler = GetComponent<PlayerHandler>();
 
 	}
 
@@ -122,7 +125,7 @@ namespace Player {
 						continue;
 					}
 				}
-
+				
 				moveAmount.y = (hit.distance - SkinWidth) * directionY;
 				rayLength = hit.distance;
 
@@ -251,7 +254,7 @@ namespace Player {
 
 		public LayerMask collisionMask;
 
-		protected const float SkinWidth = .015f;
+		[HideInInspector] public const float SkinWidth = .015f;
 		[HideInInspector]
 		public int horizontalRayCount;
 		[HideInInspector]

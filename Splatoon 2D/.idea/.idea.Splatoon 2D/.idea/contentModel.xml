@@ -7,6 +7,9 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
+          <e p="Game" t="Include">
+            <e p="SplashHandler.cs" t="Include" />
+          </e>
           <e p="Misc" t="Include">
             <e p="EditorCompileTimer.cs" t="Include" />
             <e p="PlatformController.cs" t="Include" />
@@ -17,6 +20,14 @@
             <e p="PlayerHandler.cs" t="Include" />
             <e p="PlayerInput.cs" t="Include" />
             <e p="PlayerMovement.cs" t="Include" />
+          </e>
+          <e p="Weapon" t="Include">
+            <e p="Projectile.cs" t="Include" />
+            <e p="Shooter" t="Include">
+              <e p="Shooter.cs" t="Include" />
+              <e p="ShooterHandler.cs" t="Include" />
+            </e>
+            <e p="WeaponInput.cs" t="Include" />
           </e>
         </e>
       </e>

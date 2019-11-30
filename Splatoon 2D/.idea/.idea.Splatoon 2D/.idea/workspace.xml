@@ -30,16 +30,17 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Weapon/WeaponInput.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game/SplashHandler.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Weapon/Shooter/ShooterHandler.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerMovement.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/BetterJump.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Weapon/Projectile.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerInput.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerHandler.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/CodeMonkey/Utils/Button_Sprite.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/CodeMonkey/Utils/UI_TextComplex.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerAimWeapon.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/CodeMonkey/Utils/UtilsClass.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/BetterJump.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerInput.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Misc/PlatformController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerHandler.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Misc/FrameRateHandler.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerMovement.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -50,6 +51,7 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerPhysics/PlayerMovement.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerPhysics/PlayerController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerSquid.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Weapon/Weapon.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerHealth.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Misc/PostProcessingEffects.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerManager.cs" />
@@ -79,16 +81,8 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerHandler.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerMovement.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Weapon/Weapon.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Weapon/Shooter.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Weapon/Shooter/Shooter.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Weapon/WeaponHandler.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Weapon/Shooter/ShooterObject.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Weapon/Weapon Input.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Weapon/Shooter/ShooterHandler.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Weapon/WeaponInput.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Weapon/Projectile.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Game/SplashHandler.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerAimWeapon.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Misc/FrameRateHandler.cs" />
       </list>
     </option>
   </component>
@@ -169,8 +163,9 @@
       <workItem from="1572707497275" duration="7865000" />
       <workItem from="1572723495314" duration="5582000" />
       <workItem from="1572794932403" duration="5227000" />
-      <workItem from="1573373548426" duration="2597000" />
-      <workItem from="1573396903050" duration="7027000" />
+      <workItem from="1573373548426" duration="700000" />
+      <workItem from="1575145928579" duration="979000" />
+      <workItem from="1575146934637" duration="2522000" />
     </task>
     <servers />
   </component>

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d0199c11aa6f514784c5c69cd8378d8, type: 3}
+  m_Name: PlayFabEditorPrefsSO
+  m_EditorClassIdentifier: 
+  DevAccountEmail: namanhegde33@gmail.com
+  DevAccountToken: ipgsowstchz11ynn36ju7t7k4h3nw4nta6374i5r76iamnixp8zcp5k5exkn7fgdcxo4kaq6hh39phktosuuab8brmzbiwhypguq8sp5n6h53afyzfaxhd89fw17bh31stftkritpffpa5w88y6f8j3p3q8d5m55jt9eu7ntkxxjd9ytnmm1jsuxj9wrum5njn4ys8iz
+  SelectedStudio: Aqua Armour
+  SdkPath: Assets/PlayFabSdk
+  EdExPath: 
+  LocalCloudScriptPath: 
+  PanelIsShown: 0
+  curMainMenuIdx: 1
+  curSubMenuIdx: 0

@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b87d5fdd-c717-427c-98cf-777993cbcb66" name="Default Changelist" comment="" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -12,53 +11,92 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/PlayerSpritesheetHandler.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/MeshHandler.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game/LoginPass.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ide.rider@1.1.4/Rider/Editor/RiderScriptEditor.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@7.1.7/Editor/2D/Light2DEditorUtility.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game/GameHandler.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Menu/LoginHandler.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Menu/MainMenu.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Misc/FrameRateHandler.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerMovement.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Menu/LobbyMenu.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game/MatchmakingHandler.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Menu/LoginMenu.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game/MatchmakingMenu.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Assets/Scripts/MeshHandler.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PlayerSpritesheetHandler.cs" />
+        <option value="$PROJECT_DIR$/../../../Unity Editor/2019.3.0f3/Editor/Data/Resources/ScriptTemplates/81-C# Script-NewBehaviourScript.cs.txt" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PlayerInput.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PlayerMovement.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Misc/FrameRateHandler.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Game/Inkopolis Tower.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Game/InkopolisTower.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Game/Lobby.cs" />
+        <option value="$PROJECT_DIR$/Assets/Photon/PhotonRealtime/Code/PhotonPingClasses.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerInput.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Game/GameHandler.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerMovement.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Menu/Matchmaking.cs" />
+        <option value="$PROJECT_DIR$/Assets/PlayFabSdk/PlayFabSDK/Shared/Internal/PlayFabHttp/PlayFabUnityHttp.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Menu/Login.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Menu/Lobby.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Menu/MainMenu.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Game/LoginPass.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Menu/LoginMenu.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Menu/LoginHandler.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Game/Matchmaking.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Menu/LobbyMenu.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Game/MatchmakingMenu.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Game/MatchmakingHandler.cs" />
       </list>
     </option>
   </component>
   <component name="ProjectId" id="1VkVxfMiQA5jWMr6DlPBdRwEbIy" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="Discover.Launch.Via.Unity" value="true" />
     <property name="Rider.DefaultBreakpoints.AreToggled" value="true" />
     <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="TWShift.4" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.smartKeys_rider" />
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
       <option name="pid" />
-      <option name="userSelectedPid" value="false" />
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" pid="17148">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="17148" />
-      <option name="userSelectedPid" value="false" />
+      <option name="pid" />
       <method v="2" />
     </configuration>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+    <option name="showServicesTree" value="false" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -74,8 +112,36 @@
       <workItem from="1577902140193" duration="629000" />
       <workItem from="1577907671454" duration="5819000" />
       <workItem from="1577974042963" duration="4310000" />
+      <workItem from="1578321378606" duration="13000" />
+      <workItem from="1578333556677" duration="1890000" />
+      <workItem from="1578335795013" duration="31000" />
+      <workItem from="1578335838701" duration="8015000" />
+      <workItem from="1578391194391" duration="2366000" />
+      <workItem from="1578413622243" duration="7248000" />
+      <workItem from="1578424318479" duration="756000" />
+      <workItem from="1578427076979" duration="1810000" />
+      <workItem from="1578587566215" duration="5705000" />
+      <workItem from="1578597764255" duration="5261000" />
+      <workItem from="1579031043566" duration="5501000" />
+      <workItem from="1579370879540" duration="434000" />
+      <workItem from="1579377718783" duration="3366000" />
+      <workItem from="1579445119539" duration="10068000" />
+      <workItem from="1579509485472" duration="362000" />
+      <workItem from="1579510108594" duration="381000" />
+      <workItem from="1579510504582" duration="1332000" />
+      <workItem from="1579545988379" duration="3043000" />
+      <workItem from="1579636616738" duration="234000" />
+      <workItem from="1579636904186" duration="1174000" />
+      <workItem from="1579638975005" duration="857000" />
+      <workItem from="1579639833927" duration="1943000" />
+      <workItem from="1579876475435" duration="14136000" />
+      <workItem from="1580048473721" duration="9070000" />
+      <workItem from="1580065708372" duration="7115000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
   </component>
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
@@ -92,8 +158,83 @@
       </map>
     </option>
   </component>
-  <component name="VcsManagerConfiguration">
-    <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="true" />
+  <component name="WindowStateProjectService">
+    <state x="552" y="179" key="#Notifications" timestamp="1579509637565">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="179" key="#Notifications/0.0.1920.1040@0.0.1920.1040" timestamp="1579509637565" />
+    <state x="552" y="179" key="#Plugins" timestamp="1579638850581">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="179" key="#Plugins/0.0.1920.1040@0.0.1920.1040" timestamp="1579638850581" />
+    <state width="1877" height="348" key="GridCell.Tab.0.bottom" timestamp="1580060163341">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1580060163341" />
+    <state width="1877" height="348" key="GridCell.Tab.0.center" timestamp="1580060163341">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1580060163341" />
+    <state width="1877" height="348" key="GridCell.Tab.0.left" timestamp="1580060163341">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1580060163341" />
+    <state width="1877" height="348" key="GridCell.Tab.0.right" timestamp="1580060163341">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1580060163341" />
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1580060163341">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1580060163341" />
+    <state width="1877" height="348" key="GridCell.Tab.1.center" timestamp="1580060163341">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1580060163341" />
+    <state width="1877" height="348" key="GridCell.Tab.1.left" timestamp="1580060163341">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1580060163341" />
+    <state width="1877" height="348" key="GridCell.Tab.1.right" timestamp="1580060163341">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1580060163341" />
+    <state width="1877" height="348" key="GridCell.Tab.2.bottom" timestamp="1580060163341">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.2.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1580060163341" />
+    <state width="1877" height="348" key="GridCell.Tab.2.center" timestamp="1580060163341">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.2.center/0.0.1920.1040@0.0.1920.1040" timestamp="1580060163341" />
+    <state width="1877" height="348" key="GridCell.Tab.2.left" timestamp="1580060163341">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.2.left/0.0.1920.1040@0.0.1920.1040" timestamp="1580060163341" />
+    <state width="1877" height="348" key="GridCell.Tab.2.right" timestamp="1580060163341">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.2.right/0.0.1920.1040@0.0.1920.1040" timestamp="1580060163341" />
+    <state width="1877" height="348" key="GridCell.Tab.3.bottom" timestamp="1580060163342">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.3.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1580060163342" />
+    <state width="1877" height="348" key="GridCell.Tab.3.center" timestamp="1580060163341">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.3.center/0.0.1920.1040@0.0.1920.1040" timestamp="1580060163341" />
+    <state width="1877" height="348" key="GridCell.Tab.3.left" timestamp="1580060163341">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.3.left/0.0.1920.1040@0.0.1920.1040" timestamp="1580060163341" />
+    <state width="1877" height="348" key="GridCell.Tab.3.right" timestamp="1580060163342">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.3.right/0.0.1920.1040@0.0.1920.1040" timestamp="1580060163342" />
+    <state x="461" y="163" key="SettingsEditor" timestamp="1579509829533">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="461" y="163" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1579509829533" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

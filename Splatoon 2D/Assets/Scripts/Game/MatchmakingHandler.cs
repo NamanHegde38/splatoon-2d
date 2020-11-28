@@ -71,10 +71,6 @@ namespace Splatoon2D {
 
         public override void OnDisconnected(DisconnectCause cause) {
             SceneManager.LoadScene("Lobby");
-            Destroy(GetComponent<MatchmakingMenu>());
-            if (FindObjectsOfType<MatchmakingHandler>().Length > 1) {
-                Destroy(this);
-            }
         }
         
         private void SetMatchmakingStatus(string status) {

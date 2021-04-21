@@ -19,9 +19,16 @@ public static class ConsoleProDebug
 
 	// Send a log to a specific filter regardless of contents
 	// Ex: ConsoleProDebug.LogToFilter("Hi", "CustomFilter");
-	public static void LogToFilter(string inLog, string inFilterName)
+	public static void LogToFilter(string inLog, string inFilterName, UnityEngine.Object inContext = null)
 	{
-		Debug.Log(inLog + "\nCPAPI:{\"cmd\":\"Filter\" \"name\":\"" + inFilterName + "\"}");
+		Debug.Log(inLog + "\nCPAPI:{\"cmd\":\"Filter\" \"name\":\"" + inFilterName + "\"}", inContext);
+	}
+
+	// Send a log as a regular log but change its type in ConsolePro
+	// Ex: ConsoleProDebug.LogAsType("Hi", "Error");
+	public static void LogAsType(string inLog, string inTypeName, UnityEngine.Object inContext = null)
+	{
+		Debug.Log(inLog + "\nCPAPI:{\"cmd\":\"LogType\" \"name\":\"" + inTypeName + "\"}", inContext);
 	}
 
 	// Watch a variable. This will only produce one log entry regardless of how many times it is logged, allowing you to track variables without spam.

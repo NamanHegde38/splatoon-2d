@@ -1,5 +1,5 @@
 // Uncomment to use in Editor
-// #define USECONSOLEPROREMOTESERVERINEDITOR
+#define USECONSOLEPROREMOTESERVERINEDITOR
 
 #if (!UNITY_EDITOR && DEBUG) || (UNITY_EDITOR && USECONSOLEPROREMOTESERVERINEDITOR)
 	#define USECONSOLEPROREMOTESERVER
@@ -60,12 +60,11 @@ public class ConsoleProRemoteServer : MonoBehaviour
 	[System.SerializableAttribute]
 	public class QueuedLog
 	{
+		public string timestamp;
 		public string message;
-		public string stackTrace;
-		public LogType type;
+		public string logType;
 	}
 
-	
 	[NonSerializedAttribute]
 	public List<QueuedLog> logs = new List<QueuedLog>();
 
@@ -166,12 +165,12 @@ public class ConsoleProRemoteServer : MonoBehaviour
 
 	void OnEnable()
 	{
-		Application.logMessageReceived += LogCallback;
+		Application.logMessageReceivedThreaded += LogCallback;
 	}
 
 	void OnDisable()
 	{
-		Application.logMessageReceived -= LogCallback;
+		Application.logMessageReceivedThreaded -= LogCallback;
 	}
 
 	#endif
@@ -186,17 +185,23 @@ public class ConsoleProRemoteServer : MonoBehaviour
 
 	void QueueLog(string logString, string stackTrace, LogType type)
 	{
-		if(logs.Count > 200)
+		if(logs.Count > 1000)
 		{
-			while(logs.Count > 200)
+			while(logs.Count > 1000)
 			{
 				logs.RemoveAt(0);
 			}
 		}
 
-		logs.Add(new QueuedLog() { message = logString, stackTrace = stackTrace, type = type } );
+		#if CSHARP_7_3_OR_NEWER
+			logString = $"{logString}\n{stackTrace}\n";
+			logs.Add(new QueuedLog() { message = logString, logType = type.ToString(), timestamp = $"[{DateTime.Now.ToString("HH:mm:ss")}]" } );
+		#else
+			logString = logString + "\n" + stackTrace + "\n";
+			logs.Add(new QueuedLog() { message = logString, logType = type.ToString(), timestamp = "[" + DateTime.Now.ToString("HH:mm:ss") + "]" } );
+		#endif
 	}
-
+	
 	void LateUpdate()
 	{
 		if(_netServer == null)
@@ -217,13 +222,10 @@ public class ConsoleProRemoteServer : MonoBehaviour
 		}
 
 		string cMessage = "";
-
-		for(int i = 0; i < logs.Count; i++)
+		
+		foreach(var cLog in logs)
 		{
-			cMessage = "";
-
-			QueuedLog cLog = logs[i];
-			cMessage = "::::" + cLog.type + "::::" + cLog.message + "\n" + cLog.stackTrace;
+			cMessage = JsonUtility.ToJson(cLog);
 			_dataWriter.Reset();
 			_dataWriter.Put(cMessage);
 			_ourPeer.Send(_dataWriter, SendOptions.ReliableOrdered);
